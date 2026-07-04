@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Book a Discovery Call — The Unreleased Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold: #c9973a;
+  --gold-light: #e2b96a;
+  --gold-pale: #f0d9a8;
+  --gold-dim: rgba(201,151,58,0.1);
+  --gold-border: rgba(201,151,58,0.28);
+  --black: #080808;
+  --navy: #0e0e0e;
+  --navy-light: #141414;
+  --navy-card: #181818;
+  --text: #f0d9a8;
+  --text-muted: rgba(240,217,168,0.65);
+  --text-dim: rgba(240,217,168,0.35);
+  --border: rgba(201,151,58,0.18);
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(8,8,8,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.nav-back {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+  letter-spacing: 0.08em;
+}
+.nav-back:hover { color: var(--text-muted); }
+
+/* ── HERO ── */
+.hero {
+  padding: 120px 2rem 60px;
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: fixed;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,151,58,0.05) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  color: var(--gold-pale);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.hero-divider-line { flex: 1; max-width: 80px; height: 1px; background: var(--gold-border); }
+.hero-divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+.hero-body {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+
+/* ── WHAT TO EXPECT ── */
+.expect {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 2rem;
+  margin-bottom: 0;
+}
+.expect-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.expect-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.expect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 640px) { .expect-grid { grid-template-columns: 1fr; } }
+.expect-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+.expect-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  opacity: 0.6;
+}
+.expect-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold-pale);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.04em;
+}
+.expect-body {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── BOOKING SECTION ── */
+.booking-section {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.booking-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.booking-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--gold-pale);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* ── BOOKING EMBED CONTAINER ── */
+.booking-embed-wrap {
+  background: var(--navy-card);
+  border: 1px solid var(--gold-border);
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 600px;
+  position: relative;
+}
+
+/* ── BOOKING PLACEHOLDER ── */
+.booking-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  min-height: 600px;
+}
+.booking-placeholder-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.booking-placeholder h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--gold-pale);
+  margin-bottom: 0.75rem;
+}
+.booking-placeholder p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 480px;
+  margin-bottom: 1rem;
+}
+.booking-placeholder .instructions {
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  max-width: 520px;
+  width: 100%;
+  margin-top: 1rem;
+}
+.booking-placeholder .instructions h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+.booking-placeholder .instructions ol {
+  padding-left: 1.25rem;
+}
+.booking-placeholder .instructions li {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 0.25rem;
+}
+.booking-placeholder .instructions code {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--gold);
+  background: rgba(201,151,58,0.1);
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+
+/* ── PRE-BOOKING FORM ── */
+.prebook-section {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem;
+}
+.prebook-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.prebook-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.prebook-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--gold-pale);
+  margin-bottom: 0.5rem;
+}
+.prebook-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* ── FORM ── */
+.form-group { margin-bottom: 1.25rem; }
+.form-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  background: var(--black);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 13px 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--gold-border); }
+.form-textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
+.form-select { cursor: pointer; }
+.form-select option { background: var(--navy); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 480px) { .form-grid { grid-template-columns: 1fr; } }
+
+.submit-btn {
+  width: 100%;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  border-radius: 6px;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+.submit-btn:hover { background: var(--gold-light); }
+
+/* ── SUCCESS STATE ── */
+.success-state {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.success-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(74,140,92,0.15);
+  border: 1px solid rgba(74,140,92,0.4);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 28px;
+}
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--gold-pale);
+  margin-bottom: 0.75rem;
+}
+.success-body {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+.success-detail {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+  max-width: 400px;
+  margin: 0 auto 1.5rem;
+  text-align: left;
+}
+.success-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.success-detail-row:last-child { border-bottom: none; }
+.success-detail-row span:first-child { color: var(--text-dim); }
+.success-detail-row span:last-child { color: var(--gold-pale); font-weight: 500; }
+
+/* ── ABOUT STRIP ── */
+.about-strip {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+@media (max-width: 600px) { .about-strip { grid-template-columns: 1fr; text-align: center; } }
+.about-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--gold-dim);
+  border: 2px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.about-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.about-avatar-fallback {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: var(--gold);
+}
+.about-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gold-pale);
+  margin-bottom: 0.25rem;
+}
+.about-role {
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.about-bio {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.footer-line {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; }
+.footer-links a {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.06em;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">The Unreleased Artist</a>
+  <a href="/" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to site
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Free · 15 minutes · No commitment</div>
+  <h1 class="hero-title">Book a Discovery Call</h1>
+  <div class="hero-divider">
+    <div class="hero-divider-line"></div>
+    <div class="hero-divider-dot"></div>
+    <div class="hero-divider-line"></div>
+  </div>
+  <p class="hero-sub">"This isn't a sales call. It's a real conversation."</p>
+  <p class="hero-body">No pitch. No pressure. Just 15 minutes to talk honestly about where you are, what's in the way, and whether working together makes sense. You leave with clarity either way.</p>
+  <p class="hero-body">This call is for music creatives at any stage — musicians, producers, engineers, songwriters, music entrepreneurs, and anyone who has been doing this alone and is ready to find out what's really in the way.</p>
+</section>
+
+<!-- WHAT TO EXPECT -->
+<section class="expect">
+  <div class="expect-inner">
+    <div class="expect-label">What happens on the call</div>
+    <div class="expect-grid">
+      <div class="expect-card">
+        <div class="expect-num">01</div>
+        <div class="expect-title">You tell me where you are</div>
+        <div class="expect-body">Where you are in your music or creative career right now. What's working. What isn't. What you've been carrying alone.</div>
+      </div>
+      <div class="expect-card">
+        <div class="expect-num">02</div>
+        <div class="expect-title">We go beneath the surface</div>
+        <div class="expect-body">What's really in the way. Not the surface reasons — the real ones. The fear, the doubt, the patterns, the questions that haven't been answered.</div>
+      </div>
+      <div class="expect-card">
+        <div class="expect-num">03</div>
+        <div class="expect-title">We decide together</div>
+        <div class="expect-body">Whether working together makes sense. If it does, we talk about how. If it doesn't, you leave with more clarity than you arrived with.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section">
+  <div class="booking-label">Choose a time</div>
+  <div class="booking-title">Pick a slot that works for you</div>
+
+  <div class="booking-embed-wrap">
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- CALENDLY INLINE BOOKING WIDGET                         -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+
+    <!-- Calendly inline widget begin -->
+    <div class="calendly-inline-widget"
+         data-url="https://calendly.com/daniel-theunreleasedartist/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=f0d9a8&primary_color=c9973a"
+         style="min-width:320px;height:700px;">
+    </div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly inline widget end -->
+
+  </div>
+</section>
+
+<!-- PRE-BOOKING FORM -->
+<section class="prebook-section">
+  <div class="prebook-inner">
+
+    <div id="prebook-form-wrap">
+      <div class="prebook-label">Before we meet</div>
+      <div class="prebook-title">Tell me a little about where you are</div>
+      <div class="prebook-sub">This is optional but it helps me arrive at the call knowing your context. Takes two minutes. Everything you share stays between us.</div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">Your name</label>
+          <input type="text" class="form-input" id="pre-name" placeholder="First name"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" id="pre-email" placeholder="your@email.com"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Your role in music</label>
+        <select class="form-select" id="pre-role">
+          <option value="">Select the one that fits best</option>
+          <option>Musician / Singer</option>
+          <option>Producer</option>
+          <option>Songwriter</option>
+          <option>Audio Engineer</option>
+          <option>Music Entrepreneur</option>
+          <option>Multiple roles</option>
+          <option>I haven't started yet</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">How long have you been doing this?</label>
+        <select class="form-select" id="pre-experience">
+          <option value="">Select...</option>
+          <option>I'm just starting</option>
+          <option>Less than 2 years</option>
+          <option>2 to 5 years</option>
+          <option>5 to 10 years</option>
+          <option>More than 10 years</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What's the main thing getting in the way right now?</label>
+        <textarea class="form-textarea" id="pre-block" placeholder="Be honest. There's no wrong answer. This helps me understand where you actually are before we talk."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What would a successful outcome from this call look like for you?</label>
+        <textarea class="form-textarea" id="pre-outcome" placeholder="What would make this 15 minutes worth your time?" style="min-height:80px;"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Anything else you want Daniel to know before the call?</label>
+        <textarea class="form-textarea" id="pre-other" placeholder="Completely optional." style="min-height:70px;"></textarea>
+      </div>
+
+      <button class="submit-btn" onclick="submitPrebook()">Submit — I'll see you on the call</button>
+
+      <p style="font-size:11px; color:var(--text-dim); text-align:center; margin-top:1rem; line-height:1.7;">
+        Your information stays private. It's used only to prepare for your discovery call.
+      </p>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-state" id="prebook-success">
+      <div class="success-icon">✓</div>
+      <div class="success-title">You're all set.</div>
+      <p class="success-body">Your pre-call notes have been received. Daniel will review them before your session. Look out for a confirmation email with the call details.</p>
+      <div class="success-detail" id="success-detail"></div>
+      <p style="font-size:13px; color:var(--text-muted); line-height:1.75; max-width:400px; margin:0 auto;">
+        If you need to reschedule or have any questions before the call, email
+        <a href="mailto:connect@theunreleasedartist.com" style="color:var(--gold); text-decoration:none;">connect@theunreleasedartist.com</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<section style="border-top:1px solid var(--border);">
+  <div class="about-strip">
+    <div class="about-avatar">
+      <!-- Replace with your photo -->
+      <img src="" alt="Daniel J. Ryder"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+      <div class="about-avatar-fallback" style="display:flex; align-items:center; justify-content:center; width:100%; height:100%;">D</div>
+    </div>
+    <div>
+      <div class="about-name">Daniel J. Ryder</div>
+      <div class="about-role">Professional & Executive Coach · Artist · Program Director</div>
+      <div class="about-bio">20+ years as a working artist. A career directing high-level programs and projects. Trained professional and executive coach. I built The Unreleased Artist because the person I needed didn't exist. Now they do.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <!-- FOOTER EMAIL SIGNUP -->
+    <div id="footer-signup" style="background:#141414; border:1px solid rgba(201,151,58,0.22); border-radius:8px; padding:2.5rem 2rem; max-width:540px; margin:0 auto 3rem; text-align:center;">
+      <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#c9973a; margin-bottom:0.75rem;">Stay in the loop</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#f0d9a8; line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
+      <p style="font-size:13px; color:rgba(240,217,168,0.7); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
+      <div id="fs-form" style="display:flex; border:1px solid rgba(201,151,58,0.25); border-radius:3px; overflow:hidden; max-width:400px; margin:0 auto 0.75rem;">
+        <input type="email" id="fs-email" placeholder="Your email address" style="flex:1; background:#080808; border:none; padding:13px 16px; font-family:'Montserrat',sans-serif; font-size:13px; color:#f0d9a8; outline:none; min-width:0;" onkeydown="if(event.key==='Enter') fsSignup()"/>
+        <button onclick="fsSignup()" style="background:#c9973a; color:#080808; border:none; padding:13px 18px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; white-space:nowrap; flex-shrink:0;">Join the list</button>
+      </div>
+      <div id="fs-success" style="display:none; font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:#c9973a;">You are in. See you in your inbox.</div>
+    </div>
+    <script>function fsSignup(){var e=document.getElementById("fs-email").value.trim();if(!e||!e.includes("@")){document.getElementById("fs-email").focus();return;}document.getElementById("fs-form").style.display="none";document.getElementById("fs-success").style.display="block";}</script>
+
+  <div class="footer-brand">The Unreleased Artist</div>
+  <div class="footer-line">It's not about the music. It's about you.</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/#work-with-me">Work With Me</a>
+    <a href="/inner-circle.html">Inner Circle</a>
+    <a href="mailto:connect@theunreleasedartist.com">Contact</a>
+    <a href="https://patreon.com/theunreleasedartist" target="_blank" rel="noopener">Patreon</a>
+  </div>
+</footer>
+
+<script>
+function submitPrebook() {
+  const name = document.getElementById('pre-name').value.trim();
+  const email = document.getElementById('pre-email').value.trim();
+  const role = document.getElementById('pre-role').value;
+  const experience = document.getElementById('pre-experience').value;
+  const block = document.getElementById('pre-block').value.trim();
+  const outcome = document.getElementById('pre-outcome').value.trim();
+  const other = document.getElementById('pre-other').value.trim();
+
+  if (!name || !email) {
+    alert('Please enter your name and email so I know who to expect.');
+    return;
+  }
+
+  // Save locally
+  const entry = { name, email, role, experience, block, outcome, other, ts: new Date().toISOString() };
+  const existing = JSON.parse(localStorage.getItem('ura_bookings') || '[]');
+  existing.unshift(entry);
+  localStorage.setItem('ura_bookings', JSON.stringify(existing));
+
+  // Show success
+  document.getElementById('prebook-form-wrap').style.display = 'none';
+  document.getElementById('prebook-success').style.display = 'block';
+
+  const detail = document.getElementById('success-detail');
+  detail.innerHTML = `
+    <div class="success-detail-row"><span>Name</span><span>${name}</span></div>
+    <div class="success-detail-row"><span>Email</span><span>${email}</span></div>
+    ${role ? `<div class="success-detail-row"><span>Role</span><span>${role}</span></div>` : ''}
+    <div class="success-detail-row"><span>Status</span><span style="color:#4a8c5c;">Notes received ✓</span></div>
+  `;
+
+  window.scrollTo({ top: document.getElementById('prebook-success').offsetTop - 100, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

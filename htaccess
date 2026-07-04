@@ -1,0 +1,45 @@
+# ── THE UNRELEASED ARTIST — CACHE CONTROL ──
+# HTML pages always load fresh — visitors always see the latest version
+# Images, CSS, and fonts are cached for 30 days for fast loading
+
+# Never cache HTML files
+<FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>
+
+# Cache images for 30 days — fast loading for returning visitors
+<FilesMatch "\.(png|jpg|jpeg|gif|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+
+# Cache CSS and JS for 7 days
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
+
+# Cache fonts for 1 year — they never change
+<FilesMatch "\.(woff|woff2|ttf|eot|otf)$">
+    Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+
+# ── SECURITY ──
+# Hide server information
+ServerSignature Off
+
+# Prevent directory browsing
+Options -Indexes
+
+# ── FRIENDLY URLS ──
+# Remove .html extension from URLs (optional)
+# Visitors can type theunreleasedartist.com/blog
+# instead of theunreleasedartist.com/blog.html
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# ── ERROR PAGES ──
+# Custom 404 page — redirect broken links to homepage
+ErrorDocument 404 /index.html

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — The Unreleased Artist</title>
+<meta name="description" content="About The Unreleased Artist — why this work matters and the lived experience behind The Accompanist Model."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c9973a;--gold-light:#e2b96a;--gold-pale:#f0d9a8;
+  --gold-dim:rgba(201,151,58,0.12);--gold-border:rgba(201,151,58,0.24);
+  --black:#080808;--navy:#0e0e0e;--navy-mid:#111111;--navy-card:#161616;
+  --text:#f0d9a8;--text-muted:rgba(240,217,168,0.76);--text-dim:rgba(240,217,168,0.52);
+  --border:rgba(201,151,58,0.16);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--text);font-size:14px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.no-save,body.no-save *{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+a{text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,8,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nav-logo img{height:42px;width:auto;mix-blend-mode:lighten;filter:drop-shadow(0 0 8px rgba(201,151,58,.2))}
+.nav-logo-fallback{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{background:transparent;border:1px solid var(--gold-border);color:var(--gold)!important;padding:10px 18px;border-radius:2px}
+.nav-cta:hover{background:var(--gold-dim)!important}
+.about-hero{min-height:760px;padding:124px 2rem 5rem;position:relative;overflow:hidden;background:radial-gradient(circle at 72% 30%,rgba(201,151,58,.10),transparent 34%),linear-gradient(180deg,#080808 0%,#0a0a0a 56%,#101010 100%)}
+.about-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.95fr) minmax(360px,1.05fr);gap:2.5rem;align-items:center;position:relative;z-index:2}
+.about-copy{max-width:560px;position:relative;z-index:4}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;position:relative;display:inline-block}
+.eyebrow::after{content:"";display:block;width:120px;height:1px;background:var(--gold-border);margin-top:.65rem}
+.about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,78px);font-weight:500;color:var(--gold-pale);line-height:.98;margin-bottom:1.4rem;letter-spacing:-.02em}
+.about-title span{color:var(--gold)}
+.title-rule{width:70px;height:1px;background:var(--gold);margin:0 0 2rem;position:relative}
+.title-rule::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);position:absolute;right:-12px;top:-2px}
+.about-copy p{font-size:15px;line-height:1.92;color:rgba(240,217,168,.84);font-weight:300;margin-bottom:1.25rem}
+.about-copy strong{color:var(--gold-pale);font-weight:500}
+.photo-panel{position:relative;min-height:580px;overflow:hidden;-webkit-user-drag:none;user-drag:none}
+.photo-panel::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.9) 8%,rgba(8,8,8,.38) 24%,rgba(8,8,8,0) 40%),linear-gradient(270deg,#080808 0%,rgba(8,8,8,.72) 5%,rgba(8,8,8,0) 23%),linear-gradient(180deg,rgba(8,8,8,.1) 0%,rgba(8,8,8,0) 42%,#080808 100%);pointer-events:none}
+.photo-panel::after{content:"";position:absolute;inset:0;z-index:3;background:radial-gradient(circle at 65% 30%,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 38%,rgba(8,8,8,.76) 82%);pointer-events:none}
+.about-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.95) contrast(1.02) brightness(.82);pointer-events:none;-webkit-user-drag:none;user-drag:none}
+.pull-quote{position:absolute;z-index:5;left:20%;right:4%;bottom:5%;max-width:430px;font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.4vw,44px);font-style:italic;color:var(--gold);line-height:1.18;text-shadow:0 8px 24px rgba(0,0,0,.72)}
+.pull-quote::after{content:"";display:block;width:72px;height:1px;background:var(--gold);margin-top:1.1rem}
+.experience{padding:4.75rem 2rem;background:linear-gradient(180deg,#111 0%,#0b0b0b 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.section-inner{max-width:1120px;margin:0 auto}
+.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,44px);font-weight:500;color:var(--gold-pale);line-height:1.15;text-align:center;margin-bottom:2.75rem}
+.section-heading span{color:var(--gold)}
+.icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.icon-card{text-align:center;padding:1rem 1.25rem}
+.icon{font-size:42px;line-height:1;color:var(--gold);margin-bottom:1.1rem;font-family:'Cormorant Garamond',serif}
+.icon-title{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;color:var(--gold-pale);margin-bottom:.65rem}
+.icon-card p{font-size:14px;line-height:1.75;color:var(--text-muted);font-weight:300}
+.beliefs{padding:5rem 2rem;background:#080808}
+.beliefs-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:5rem;align-items:start}
+.beliefs h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,46px);font-weight:500;color:var(--gold);margin-bottom:1.25rem}
+.beliefs p{font-size:15px;line-height:1.9;color:var(--text-muted);font-weight:300;margin-bottom:1.15rem}
+.belief-list{display:grid;gap:1.5rem;border-left:1px solid var(--gold-border);padding-left:2.5rem;margin-top:.35rem}
+.belief-item{position:relative}
+.belief-item::before{content:"";position:absolute;left:-2.72rem;top:.55rem;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.belief-item h3{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold-pale);font-weight:500;margin-bottom:.25rem}
+.belief-item p{margin:0}
+.cta-wrap{padding:0 2rem 5rem;background:#080808}
+.cta{max-width:1040px;margin:0 auto;border:1px solid var(--gold-border);background:linear-gradient(135deg,#101010,#080808);padding:2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:500;color:var(--gold);margin-bottom:.35rem}
+.cta p{font-size:15px;color:var(--text-muted);line-height:1.75;font-weight:300}
+.btn-gold{display:inline-block;background:var(--gold);color:var(--black);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;border-radius:2px;transition:.2s;white-space:nowrap}
+.btn-gold:hover{background:var(--gold-light)}
+footer{background:var(--navy);border-top:1px solid var(--gold-border);padding:3rem 2rem;text-align:center}
+footer img{width:160px;mix-blend-mode:lighten;filter:drop-shadow(0 0 6px rgba(201,151,58,.15));margin-bottom:.75rem}
+.footer-fallback{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);margin-bottom:.25rem}
+.footer-tagline{font-size:13px;color:var(--text-dim);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:1.25rem}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.footer-links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim);transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:11px;color:var(--text-dim)}
+@media(max-width:900px){
+  .about-hero{padding-top:108px;min-height:auto}.about-inner{grid-template-columns:1fr;gap:2.2rem}.photo-panel{min-height:420px;max-width:620px;width:100%;margin:0 auto}
+  .photo-panel::before{background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.42) 12%,rgba(8,8,8,0) 35%),linear-gradient(270deg,#080808 0%,rgba(8,8,8,.42) 12%,rgba(8,8,8,0) 35%),linear-gradient(180deg,rgba(8,8,8,0) 0%,rgba(8,8,8,0) 48%,#080808 100%)}
+  .pull-quote{left:8%;right:8%;bottom:5%;font-size:32px}.icon-grid{grid-template-columns:1fr 1fr}.beliefs-grid{grid-template-columns:1fr;gap:2rem}.cta{grid-template-columns:1fr;text-align:center}
+}
+@media(max-width:560px){nav{padding:0 1.25rem}.nav-links li:not(:last-child){display:none}.about-hero{padding-left:1.25rem;padding-right:1.25rem}.about-title{font-size:46px}.photo-panel{min-height:350px}.icon-grid{grid-template-columns:1fr}.experience,.beliefs,.cta-wrap{padding-left:1.25rem;padding-right:1.25rem}}
+</style>
+</head>
+<body class="no-save" oncontextmenu="return false;">
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="The Unreleased Artist" onerror="this.style.display='none';document.querySelector('.nav-logo-fallback').style.display='block'"/><span class="nav-logo-fallback" style="display:none;">The Unreleased Artist</span></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li><li><a href="/about.html" class="active">About</a></li><li><a href="/work-with-me.html">Work With Me</a></li><li><a href="/inner-circle.html">Inner Circle</a></li><li><a href="/blog.html">Blog</a></li><li><a href="/discovery-call.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+<main>
+<section class="about-hero">
+  <div class="about-inner">
+    <div class="about-copy">
+      <div class="eyebrow">About Me</div>
+      <h1 class="about-title">Why This Work <span>Matters</span> To Me</h1>
+      <div class="title-rule"></div>
+      <p>I built The Unreleased Artist from my own experience.</p>
+      <p>For years, I balanced a professional career, family, and a deep commitment to creating music. Like many creatives, I often felt like I was carrying the work alone.</p>
+      <p>I know what it's like to have a song in your heart and a million things on your plate. To care deeply about your work and question whether you have enough time, clarity, confidence, or support to keep going.</p>
+      <p>I also know that you do not have to choose between a meaningful life and making art.</p>
+      <p>There is a way to build a sustainable creative life that supports who you are and what matters most.</p>
+      <p><strong>That's why I do this work: to walk alongside music creatives so they can stop carrying it all alone and create with more clarity, confidence, and momentum.</strong></p>
+    </div>
+    <div class="photo-panel" aria-label="Portrait of The Unreleased Artist">
+      <img src="about-photo-faded.png" alt="The Unreleased Artist" class="about-photo" draggable="false"/>
+      <div class="pull-quote">“More than anything, I’m proud that I never stopped creating.”</div>
+    </div>
+  </div>
+</section>
+<section class="experience">
+  <div class="section-inner">
+    <h2 class="section-heading">Experience <span>Includes</span></h2>
+    <div class="icon-grid">
+      <div class="icon-card"><div class="icon">♪</div><div class="icon-title">Music Creative</div><p>Songwriter, performer, producer, and lifelong creative with years in the real world of making music.</p></div>
+      <div class="icon-card"><div class="icon">◇</div><div class="icon-title">Educator</div><p>Teaching, training, and mentoring people at different stages of their growth and creative lives.</p></div>
+      <div class="icon-card"><div class="icon">☉</div><div class="icon-title">Coach & Mentor</div><p>Helping creatives build clarity, confidence, accountability, and momentum in the work that matters.</p></div>
+      <div class="icon-card"><div class="icon">∞</div><div class="icon-title">Leader</div><p>Guiding people, teams, programs, and projects through complexity toward meaningful next steps.</p></div>
+    </div>
+  </div>
+</section>
+<section class="beliefs">
+  <div class="beliefs-grid">
+    <div><h2>What I Believe</h2><p>You do not need more hustle. You need a better relationship with the work and a more sustainable way to move it forward.</p><p>Your art deserves the same care and commitment you give to everything else in your life.</p><p>The world needs your voice, your story, and your creativity. Let's make sure it gets out.</p></div>
+    <div class="belief-list">
+      <div class="belief-item"><h3>Creativity is not selfish.</h3><p>It is part of how you process, contribute, connect, and serve.</p></div>
+      <div class="belief-item"><h3>Clarity creates momentum.</h3><p>When you understand what is really getting in the way, the next step becomes easier to see.</p></div>
+      <div class="belief-item"><h3>You do not have to do it alone.</h3><p>You just need the right kind of support for the person you are and the work you are carrying.</p></div>
+    </div>
+  </div>
+</section>
+<section class="cta-wrap"><div class="cta"><div><h2>Let’s Start With A Conversation</h2><p>Book a discovery call and let’s talk about where you are, where you want to go, and how I can help.</p></div><a href="/discovery-call.html" class="btn-gold">Book a Discovery Call</a></div></section>
+</main>
+<footer>
+  <img src="logo.png" alt="The Unreleased Artist" onerror="this.style.display='none';document.querySelector('.footer-fallback').style.display='block'"/>
+  <div class="footer-fallback" style="display:none;">The Unreleased Artist</div><div class="footer-tagline">It's not about the music. It's about you.</div>
+  <div class="footer-links"><a href="/">Home</a><a href="/about.html">About</a><a href="/work-with-me.html">Work With Me</a><a href="/inner-circle.html">Inner Circle</a><a href="/blog.html">Blog</a><a href="/discovery-call.html">Book a Call</a><a href="mailto:connect@theunreleasedartist.com">connect@theunreleasedartist.com</a></div>
+  <div class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved.</div>
+</footer>
+<script>
+document.addEventListener('dragstart',e=>e.preventDefault());
+document.addEventListener('selectstart',e=>e.preventDefault());
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&['s','u','p'].includes(e.key.toLowerCase()))e.preventDefault();});
+</script>
+</body>
+</html>

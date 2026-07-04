@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Unreleased Artist</title>
+<meta name="description" content="For music creatives who have been doing this alone. Book a free 15 minute discovery call with me J. Ryder."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c9973a;--gold-light:#e2b96a;--gold-pale:#f0d9a8;
+  --gold-border:rgba(201,151,58,0.25);
+  --black:#080808;--navy:#0e0e0e;--navy-card:#141414;
+  --text:#f0d9a8;--text-muted:rgba(240,217,168,0.7);--text-dim:rgba(240,217,168,0.45);
+  --border:rgba(201,151,58,0.16);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Montserrat',sans-serif;
+  background:var(--black);
+  color:var(--text);
+  font-size:14px;
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(8,8,8,0.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  height:60px;display:flex;align-items:center;
+  justify-content:center;padding:0 2rem;
+}
+.nav-logo img{
+  height:36px;width:auto;
+  
+  filter:drop-shadow(0 0 8px rgba(201,151,58,0.2));
+}
+.nav-logo-fallback{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:500;
+  color:var(--gold);letter-spacing:0.04em;
+}
+
+/* ── PAGE ── */
+.page-wrap{
+  max-width:780px;
+  margin:0 auto;
+  padding:80px 2rem 4rem;
+}
+
+/* ── VIDEO ── */
+.video-wrap{
+  position:relative;width:100%;
+  padding-top:56.25%;
+  background:var(--navy-card);
+  border:1px solid var(--gold-border);
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:2rem;
+}
+.video-wrap iframe{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;border:none;
+}
+.video-placeholder{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:1rem;padding:2rem;text-align:center;
+}
+.video-placeholder-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(201,151,58,0.08);
+  border:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:center;
+}
+.video-placeholder p{
+  font-size:13px;color:var(--text-dim);
+  line-height:1.7;max-width:360px;
+}
+.video-placeholder code{
+  font-size:11px;color:var(--gold);
+  background:rgba(201,151,58,0.1);
+  padding:2px 8px;border-radius:3px;
+}
+
+/* ── BRIDGE LINE ── */
+.bridge{
+  text-align:center;
+  padding:0.5rem 2rem 2.5rem;
+}
+.bridge p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3.5vw,30px);
+  font-style:italic;
+  color:var(--gold-pale);
+  line-height:1.5;
+}
+
+/* ── BOOKING ── */
+.booking-label{
+  font-size:10px;font-weight:600;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);text-align:center;
+  margin-bottom:0.5rem;
+}
+.booking-sub{
+  font-size:14px;color:var(--text-muted);
+  text-align:center;margin-bottom:1.75rem;
+  line-height:1.75;font-weight:300;
+}
+.booking-embed{
+  background:var(--navy-card);
+  border:1px solid var(--gold-border);
+  border-radius:8px;overflow:hidden;
+}
+
+/* ── LEARN MORE ── */
+.learn-more{
+  text-align:center;
+  padding:2rem 0 0;
+  font-size:13px;
+  color:var(--text-dim);
+  line-height:1.8;
+}
+.learn-more a{
+  color:var(--gold);
+  text-decoration:none;
+  transition:opacity 0.2s;
+}
+.learn-more a:hover{opacity:0.8;}
+
+/* ── FOOTER ── */
+footer{
+  padding:2.5rem 2rem;
+  text-align:center;
+  border-top:1px solid var(--border);
+  margin-top:3rem;
+}
+footer img{
+  width:140px;
+  
+  filter:drop-shadow(0 0 6px rgba(201,151,58,0.15));
+  margin-bottom:0.75rem;
+}
+.footer-fallback{
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;color:var(--gold);
+  margin-bottom:0.5rem;
+}
+.footer-copy{
+  font-size:11px;color:var(--text-dim);
+}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo.png" alt="The Unreleased Artist"
+         onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block'"/>
+    <span class="nav-logo-fallback" style="display:none;">The Unreleased Artist</span>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- VIDEO -->
+  <div class="video-wrap">
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <!-- REPLACE THIS WITH YOUR PITCH VIDEO EMBED CODE          -->
+    <!-- YouTube: uncomment and add your video ID below         -->
+    <!-- <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1" allowfullscreen allow="autoplay; encrypted-media"></iframe> -->
+    <!-- ═══════════════════════════════════════════════════════ -->
+    <div class="video-placeholder">
+      <div class="video-placeholder-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(201,151,58,0.8)" stroke-width="1.5" stroke-linecap="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </div>
+      <p>Your pitch video goes here. Upload to YouTube then replace this placeholder with your embed code.</p>
+      <p style="margin-top:0.5rem;">Uncomment the <code>iframe</code> above and add your YouTube video ID.</p>
+    </div>
+  </div>
+
+  <!-- BRIDGE LINE -->
+  <div class="bridge">
+    <p>If this spoke to you — I'd like to meet you.</p>
+  </div>
+
+  <!-- BOOKING -->
+  <div class="booking-label">Book your free discovery call</div>
+  <p class="booking-sub">15 minutes. No pitch. No commitment. Just an honest conversation about where you are and what's really in the way.</p>
+
+  <div class="booking-embed">
+    <!-- Calendly inline widget begin -->
+    <div class="calendly-inline-widget"
+         data-url="https://calendly.com/daniel-theunreleasedartist/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=f0d9a8&primary_color=c9973a"
+         style="min-width:320px;height:700px;">
+    </div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly inline widget end -->
+  </div>
+
+  <!-- LEARN MORE -->
+  <div class="learn-more">
+    <p>Want to learn more about me and what's on offer before booking?<br/>
+    <a href="/">Visit theunreleasedartist.com</a></p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <!-- FOOTER EMAIL SIGNUP -->
+    <div id="footer-signup" style="background:#141414; border:1px solid rgba(201,151,58,0.22); border-radius:8px; padding:2.5rem 2rem; max-width:540px; margin:0 auto 3rem; text-align:center;">
+      <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#c9973a; margin-bottom:0.75rem;">Stay in the loop</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#f0d9a8; line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
+      <p style="font-size:13px; color:rgba(240,217,168,0.7); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
+      <div id="fs-form" style="display:flex; border:1px solid rgba(201,151,58,0.25); border-radius:3px; overflow:hidden; max-width:400px; margin:0 auto 0.75rem;">
+        <input type="email" id="fs-email" placeholder="Your email address" style="flex:1; background:#080808; border:none; padding:13px 16px; font-family:'Montserrat',sans-serif; font-size:13px; color:#f0d9a8; outline:none; min-width:0;" onkeydown="if(event.key==='Enter') fsSignup()"/>
+        <button onclick="fsSignup()" style="background:#c9973a; color:#080808; border:none; padding:13px 18px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; white-space:nowrap; flex-shrink:0;">Join the list</button>
+      </div>
+      <div id="fs-success" style="display:none; font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:#c9973a;">You are in. See you in your inbox.</div>
+    </div>
+    <script>function fsSignup(){var e=document.getElementById("fs-email").value.trim();if(!e||!e.includes("@")){document.getElementById("fs-email").focus();return;}document.getElementById("fs-form").style.display="none";document.getElementById("fs-success").style.display="block";}</script>
+
+  <img src="logo.png" alt="The Unreleased Artist"
+       onerror="this.style.display='none'; document.querySelector('.footer-fallback').style.display='block'"/>
+  <div class="footer-fallback" style="display:none;">The Unreleased Artist</div>
+  <div class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
