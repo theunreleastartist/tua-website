@@ -56,7 +56,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;background:ra
 
 /* HERO */
 .hero{padding:118px 2rem 5rem;background:linear-gradient(180deg,var(--black),var(--navy))}
-.hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.2fr) 360px;gap:3rem;align-items:center}
+.hero-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:3rem;align-items:center}
 .hero-eyebrow,.section-eyebrow{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,62px);font-weight:500;color:var(--gold-pale);line-height:1.05;margin-bottom:1.25rem}
 .hero-title span,.section-heading span{color:var(--gold)}
@@ -294,10 +294,14 @@ section{position:relative}
         <a href="#ways" class="btn-outline">Explore Ways to Work</a>
       </div>
     </div>
+    <!-- Portrait card removed - work-with-me-photo.png was never on the server (404).
+         To restore: put the photo at /work-with-me-photo.png, uncomment this block, and
+         set .hero-inner grid-template-columns back to "minmax(0,1.2fr) 360px".
     <aside class="portrait-card" aria-label="The Unreleased Artist portrait">
       <div class="protected-photo" role="img" aria-label="Portrait in a music studio"></div>
       <p class="portrait-note">Support for the creative and the work they are carrying.</p>
     </aside>
+    -->
   </div>
 </section>
 
