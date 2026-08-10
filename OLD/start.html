@@ -4,27 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>The Unreleased Artist</title>
-  <link rel="icon" href="/favicon.ico" sizes="any"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
-  <meta name="theme-color" content="#080808"/>
-  <link rel="canonical" href="https://theunreleasedartist.com/start.html"/>
-  <meta name="description" content="For music creatives who have been doing this alone. Book a free 15 minute discovery call."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:site_name" content="The Unreleased Artist"/>
-  <meta property="og:title" content="The Unreleased Artist"/>
-  <meta property="og:description" content="For music creatives who have been doing this alone. Book a free 15 minute discovery call."/>
-  <meta property="og:url" content="https://theunreleasedartist.com/start.html"/>
-  <meta property="og:image" content="https://theunreleasedartist.com/og-image.jpg"/>
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-  <meta property="og:image:alt" content="The Unreleased Artist. It's not about the music. It's about you."/>
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="The Unreleased Artist"/>
-  <meta name="twitter:description" content="For music creatives who have been doing this alone. Book a free 15 minute discovery call."/>
-  <meta name="twitter:image" content="https://theunreleasedartist.com/og-image.jpg"/>
-  <meta name="robots" content="noindex, follow"/>
+<meta name="description" content="For music creatives who have been doing this alone. Book a free 15 minute discovery call with me J. Ryder."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -182,7 +162,6 @@ footer img{
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 </style>
-  <script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
 </head>
 <body>
 
@@ -215,13 +194,12 @@ footer img{
 
   <!-- BRIDGE LINE -->
   <div class="bridge">
-    <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4.2vw,40px); font-weight:500; color:var(--gold-pale); line-height:1.15; margin-bottom:0.75rem;">You have been doing this alone.</h1>
     <p>If this spoke to you — I'd like to meet you.</p>
   </div>
 
   <!-- BOOKING -->
   <div class="booking-label">Book your free discovery call</div>
-  <p class="booking-sub">15 minutes. No pitch. No commitment. Just an honest conversation about where you are, what's really in the way, and what you are building.</p>
+  <p class="booking-sub">15 minutes. No pitch. No commitment. Just an honest conversation about where you are and what's really in the way.</p>
 
   <div class="booking-embed">
     <!-- Calendly inline widget begin -->
@@ -248,14 +226,18 @@ footer img{
       <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#c9973a; margin-bottom:0.75rem;">Stay in the loop</div>
       <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#f0d9a8; line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
       <p style="font-size:13px; color:rgba(240,217,168,0.7); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
-      <div style="max-width:400px; margin:0 auto;"><div data-reach-form="542463a5-d5fb-4375-877b-6c835aa386c4"></div></div>
+      <div id="fs-form" style="display:flex; border:1px solid rgba(201,151,58,0.25); border-radius:3px; overflow:hidden; max-width:400px; margin:0 auto 0.75rem;">
+        <input type="email" id="fs-email" placeholder="Your email address" style="flex:1; background:#080808; border:none; padding:13px 16px; font-family:'Montserrat',sans-serif; font-size:13px; color:#f0d9a8; outline:none; min-width:0;" onkeydown="if(event.key==='Enter') fsSignup()"/>
+        <button onclick="fsSignup()" style="background:#c9973a; color:#080808; border:none; padding:13px 18px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; white-space:nowrap; flex-shrink:0;">Join the list</button>
+      </div>
+      <div id="fs-success" style="display:none; font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:#c9973a;">You are in. See you in your inbox.</div>
     </div>
-    
+    <script>function fsSignup(){var e=document.getElementById("fs-email").value.trim();if(!e||!e.includes("@")){document.getElementById("fs-email").focus();return;}document.getElementById("fs-form").style.display="none";document.getElementById("fs-success").style.display="block";}</script>
 
   <img src="logo.png" alt="The Unreleased Artist"
        onerror="this.style.display='none'; document.querySelector('.footer-fallback').style.display='block'"/>
   <div class="footer-fallback" style="display:none;">The Unreleased Artist</div>
-  <div class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved. <span style="opacity:.45; color:#c9973a;">·</span> <a href="/privacy.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Privacy</a> <span style="opacity:.45; color:#c9973a;">·</span> <a href="/terms.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Terms</a></div>
+  <div class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved.</div>
 </footer>
 
 </body>

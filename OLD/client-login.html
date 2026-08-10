@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Portal — The Unreleased Artist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #c9973a;
+      --gold-light: #e0b86a;
+      --navy: #0d1117;
+      --navy-light: #141b24;
+      --text: #e8e0d4;
+      --text-muted: #8a8070;
+      --text-dim: #b0a898;
+      --gold-tint: rgba(201,151,58,0.05);
+      --gold-border: rgba(201,151,58,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--gold-tint);
+      border-bottom: 1px solid rgba(201,151,58,0.15);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-links a.nav-cta {
+      color: var(--gold);
+      border: 1px solid rgba(201,151,58,0.4);
+      padding: 0.4rem 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a.nav-cta:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-dim);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--gold-tint);
+      border-bottom: 1px solid rgba(201,151,58,0.15);
+      padding: 1.5rem 2rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mobile-menu a.cta {
+      color: var(--gold);
+      border: 1px solid rgba(201,151,58,0.4);
+      text-align: center;
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    /* MAIN */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 2rem 60px;
+    }
+
+    .login-wrap {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* EYEBROW + HEADING */
+    .login-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .login-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .login-heading em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .login-subtext {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .divider-line {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 2.5rem;
+      opacity: 0.5;
+    }
+
+    /* LOGIN CARD */
+    .login-card {
+      background: var(--gold-tint);
+      border: 1px solid var(--gold-border);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .login-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* FORM */
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(201,151,58,0.2);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-input:focus {
+      border-color: rgba(201,151,58,0.55);
+    }
+
+    .form-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .remember-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      cursor: pointer;
+    }
+
+    .remember-label input[type="checkbox"] {
+      accent-color: var(--gold);
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+
+    .forgot-link:hover { color: var(--gold); }
+
+    .btn-login {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-login:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    /* ERROR STATE */
+    .form-error {
+      display: none;
+      font-size: 0.78rem;
+      color: #c0735a;
+      margin-top: 1rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .form-error.visible { display: block; }
+
+    /* DIVIDER */
+    .card-divider {
+      border: none;
+      border-top: 1px solid rgba(201,151,58,0.1);
+      margin: 1.8rem 0;
+    }
+
+    /* NOT A CLIENT */
+    .not-a-client {
+      text-align: center;
+    }
+
+    .not-a-client p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      line-height: 1.7;
+    }
+
+    .not-a-client a {
+      display: inline-block;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid rgba(201,151,58,0.3);
+      padding: 0.65rem 1.4rem;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+
+    .not-a-client a:hover {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--gold-tint);
+      border-top: 1px solid rgba(201,151,58,0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .login-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/index.html" class="nav-brand">The Unreleased Artist</a>
+    <ul class="nav-links">
+      <li><a href="/index.html#about">About</a></li>
+      <li><a href="/work-with-me.html">Work With Me</a></li>
+      <li><a href="/inner-circle.html">Inner Circle</a></li>
+      <li><a href="/blog.html">The Writing</a></li>
+      <li><a href="/discovery-call.html" class="nav-cta">Book a Call</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="/index.html#about">About</a>
+    <a href="/work-with-me.html">Work With Me</a>
+    <a href="/inner-circle.html">Inner Circle</a>
+    <a href="/blog.html">The Writing</a>
+    <a href="/discovery-call.html" class="cta">Book a Call</a>
+  </div>
+
+  <!-- MAIN -->
+  <main>
+    <div class="login-wrap">
+
+      <p class="login-eyebrow">Client Portal</p>
+      <h1 class="login-heading">Welcome <em>back.</em></h1>
+      <div class="divider-line"></div>
+      <p class="login-subtext">This space is for active coaching clients. Sign in to access your session notes, resources, and everything from our work together.</p>
+
+      <div class="login-card">
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email address</label>
+          <input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-input" type="password" id="password" placeholder="Your password" autocomplete="current-password" />
+        </div>
+
+        <div class="form-footer-row">
+          <label class="remember-label">
+            <input type="checkbox" id="remember" />
+            Keep me signed in
+          </label>
+          <a href="mailto:connect@theunreleasedartist.com?subject=Client Portal Access" class="forgot-link">Need help signing in?</a>
+        </div>
+
+        <button class="btn-login" onclick="handleLogin()">Sign in</button>
+
+        <p class="form-error" id="login-error">That email and password combination didn't work. Try again or reach out for help.</p>
+
+        <hr class="card-divider" />
+
+        <div class="not-a-client">
+          <p>Not a coaching client yet? A discovery call is the first step. It's free, it's 15 minutes, and there's no pressure.</p>
+          <a href="/discovery-call.html">Book a discovery call</a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-brand">The Unreleased Artist</p>
+    <div class="footer-links">
+      <a href="/index.html#about">About</a>
+      <a href="/work-with-me.html">Work With Me</a>
+      <a href="/inner-circle.html">Inner Circle</a>
+      <a href="/blog.html">The Writing</a>
+      <a href="/discovery-call.html">Book a Call</a>
+      <a href="https://www.patreon.com/theunreleasedartist" target="_blank" rel="noopener">Patreon</a>
+      <a href="mailto:connect@theunreleasedartist.com">connect@theunreleasedartist.com</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function handleLogin() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const error = document.getElementById('login-error');
+
+      error.classList.remove('visible');
+
+      if (!email || !password) {
+        error.classList.add('visible');
+        return;
+      }
+
+      // TODO: connect to Supabase auth
+      // supabase.auth.signInWithPassword({ email, password })
+      //   .then(({ data, error }) => {
+      //     if (error) showError();
+      //     else window.location.href = '/client-portal.html';
+      //   });
+
+      // Placeholder — remove once Supabase is wired
+      error.classList.add('visible');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') handleLogin();
+    });
+  </script>
+
+</body>
+</html>

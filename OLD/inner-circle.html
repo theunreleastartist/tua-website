@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Inner Circle — The Unreleased Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--gold:#c9973a;--gold-light:#e2b96a;--gold-pale:#f0d9a8;
+--gold-dim:rgba(201,151,58,0.1);--gold-border:rgba(201,151,58,0.28);
+--black:#080808;--navy:#0e0e0e;--navy-mid:#111111;--navy-light:#141414;--navy-card:#181818;
+--text:#f0d9a8;--text-muted:rgba(240,217,168,0.65);--text-dim:rgba(240,217,168,0.35);
+--border:rgba(201,151,58,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--text);font-size:14px;line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,8,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--gold);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.nav-links a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;border:1px solid var(--gold-border);color:var(--gold)!important;padding:8px 18px;border-radius:2px;transition:background .2s!important}
+.nav-cta:hover{background:var(--gold-dim)!important}
+@media(max-width:640px){.nav-links li:not(:last-child){display:none}}
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;text-align:center}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);font-weight:500;color:var(--gold-pale);text-align:center;line-height:1.15;margin-bottom:1rem}
+.section-sub{font-size:14px;color:var(--text-muted);text-align:center;line-height:1.8;max-width:560px;margin:0 auto 3rem;font-weight:300}
+.btn-gold{background:var(--gold);color:var(--black);border:none;padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .2s;border-radius:2px}
+.btn-gold:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--gold-border);padding:14px 32px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;border-radius:2px}
+.btn-outline:hover{background:var(--gold-dim)}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(201,151,58,.07) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-inner{max-width:700px;position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:10px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold-border)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,80px);font-weight:500;color:var(--gold-pale);line-height:1;margin-bottom:.5rem}
+.hero-title span{display:block;font-size:clamp(20px,3vw,28px);color:var(--gold);font-style:italic;font-weight:400;margin-bottom:.5rem}
+.divider-row{display:flex;align-items:center;gap:12px;justify-content:center;margin:1.5rem 0}
+.divider-line{flex:1;max-width:80px;height:1px;background:var(--gold-border)}
+.divider-dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,22px);font-style:italic;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem;max-width:580px;margin-left:auto;margin-right:auto}
+.hero-body{font-size:14px;color:var(--text-muted);line-height:1.85;font-weight:300;max-width:540px;margin:0 auto 2.5rem}
+.cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+/* DISTINCTION */
+.distinction{background:var(--navy);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.distinction-inner{max-width:800px;margin:0 auto;text-align:center}
+.distinction-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3vw,32px);font-style:italic;color:var(--gold-pale);line-height:1.5;margin-bottom:1.5rem}
+.distinction-body{font-size:14px;color:var(--text-muted);line-height:1.85;font-weight:300;margin-bottom:1rem}
+.rule{width:60px;height:1px;background:var(--gold-border);margin:2rem auto}
+/* WHATS INSIDE */
+.what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:900px){.what-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.what-grid{grid-template-columns:1fr}}
+.what-card{background:var(--navy-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem;transition:border-color .2s}
+.what-card:hover{border-color:var(--gold-border)}
+.what-icon{font-size:24px;margin-bottom:1rem}
+.what-title{font-size:13px;font-weight:600;color:var(--gold-pale);margin-bottom:.5rem;letter-spacing:.04em}
+.what-body{font-size:13px;color:var(--text-muted);line-height:1.75;font-weight:300}
+.what-note{font-size:11px;color:var(--gold);margin-top:.75rem;font-style:italic}
+/* TIERS */
+.tiers-section{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--gold-border);border:1px solid var(--gold-border);border-radius:8px;overflow:hidden}
+@media(max-width:900px){.tiers-grid{grid-template-columns:1fr}}
+.tier-card{background:var(--navy);padding:2.5rem 2rem;display:flex;flex-direction:column;transition:background .2s}
+.tier-card:hover{background:var(--navy-light)}
+.tier-card.featured{background:var(--navy-card)}
+.tier-card.featured:hover{background:#1c1c1c}
+.tier-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-border);padding:3px 12px;border-radius:20px;margin-bottom:1rem;align-self:flex-start}
+.tier-price{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:500;color:var(--gold);line-height:1;margin-bottom:.25rem}
+.tier-price span{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:400;color:var(--text-dim)}
+.tier-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;color:var(--gold-pale);margin-bottom:.25rem;margin-top:.5rem}
+.tier-sub{font-size:12px;color:var(--text-dim);margin-bottom:1.25rem;letter-spacing:.06em}
+.tier-desc{font-size:13px;color:var(--text-muted);line-height:1.75;margin-bottom:1.5rem;font-weight:300;flex:1}
+.tier-features{margin-bottom:2rem}
+.tf{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:13px;color:var(--text-muted);border-bottom:1px solid rgba(201,151,58,.07)}
+.tf:last-child{border-bottom:none}
+.chk{color:var(--gold);font-size:12px;margin-top:2px;flex-shrink:0}
+.tf.dim{color:var(--text-dim)}
+.tf.dim .chk{color:var(--text-dim)}
+.tcta{display:block;text-align:center;padding:13px;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.cta-gold{background:var(--gold);color:var(--black)}.cta-gold:hover{background:var(--gold-light)}
+.cta-outline{background:transparent;color:var(--gold);border:1px solid var(--gold-border)}.cta-outline:hover{background:var(--gold-dim)}
+.cta-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--border)}.cta-ghost:hover{color:var(--text-muted);border-color:var(--gold-border)}
+/* AUDIO */
+.audio-section{background:var(--navy)}
+.audio-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+@media(max-width:768px){.audio-grid{grid-template-columns:1fr}}
+.audio-eyebrow{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem}
+.audio-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,38px);font-weight:500;color:var(--gold-pale);line-height:1.2;margin-bottom:1rem}
+.audio-body{font-size:14px;color:var(--text-muted);line-height:1.85;font-weight:300;margin-bottom:.75rem}
+.audio-ep{background:var(--navy-card);border:1px solid var(--border);border-radius:4px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;transition:border-color .2s;margin-bottom:2px}
+.audio-ep:hover{border-color:var(--gold-border)}
+.ep-num{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);opacity:.5;flex-shrink:0;width:28px}
+.ep-info{flex:1}
+.ep-title{font-size:13px;color:var(--gold-pale);font-weight:500;margin-bottom:2px}
+.ep-dur{font-size:11px;color:var(--text-dim)}
+.ep-status{font-size:11px;color:var(--text-dim);white-space:nowrap}
+.ep-status.free{color:var(--gold)}
+/* THEME */
+.theme-section{border-top:1px solid var(--border)}
+.theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+@media(max-width:768px){.theme-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.theme-grid{grid-template-columns:1fr}}
+.theme-card{background:var(--navy-card);border:1px solid var(--border);border-radius:6px;padding:1.25rem;text-align:center;transition:border-color .2s}
+.theme-card.current{border-color:var(--gold-border);background:var(--navy-light)}
+.theme-card:hover{border-color:var(--gold-border)}
+.theme-month{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem}
+.theme-card.current .theme-month{color:var(--gold)}
+.theme-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--gold-pale);line-height:1.2}
+.theme-desc{font-size:12px;color:var(--text-muted);margin-top:.5rem;line-height:1.6}
+.current-badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-border);padding:2px 8px;border-radius:20px;margin-top:.5rem}
+/* GROUP */
+.group-section{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.group-inner{max-width:680px;margin:0 auto;text-align:center}
+.group-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);font-style:italic;color:var(--gold-pale);line-height:1.5;margin-bottom:1.5rem;padding:0 2rem;position:relative}
+.group-quote::before{content:'\201C';font-size:80px;color:var(--gold-border);position:absolute;top:-20px;left:0;font-style:normal;line-height:1}
+.group-body{font-size:14px;color:var(--text-muted);line-height:1.85;font-weight:300;margin-bottom:1.5rem}
+/* NOT INCLUDED */
+.not-included{background:var(--navy);border-top:1px solid var(--border)}
+.not-included-inner{max-width:680px;margin:0 auto}
+.ni-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--gold-pale);text-align:center;margin-bottom:.75rem}
+.ni-sub{font-size:14px;color:var(--text-muted);text-align:center;line-height:1.8;font-weight:300;margin-bottom:2rem}
+.ni-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;background:var(--navy-card);border:1px solid var(--border);border-radius:6px;margin-bottom:1rem}
+.ni-icon{font-size:18px;flex-shrink:0;margin-top:2px}
+.ni-item strong{display:block;font-size:13px;color:var(--gold-pale);margin-bottom:3px;font-weight:600}
+.ni-item p{font-size:12px;color:var(--text-muted);line-height:1.65;font-weight:300}
+/* COMPARE */
+.compare-section{border-top:1px solid var(--border)}
+.ctable{width:100%;border-collapse:collapse;font-size:13px}
+.ctable th{padding:1rem;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--gold-pale);border-bottom:1px solid var(--gold-border)}
+.ctable th:first-child{text-align:left;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim)}
+.ctable th.feat{color:var(--gold)}
+.ctable td{padding:.9rem 1rem;text-align:center;color:var(--text-muted);border-bottom:1px solid rgba(201,151,58,.07)}
+.ctable td:first-child{text-align:left}
+.ctable tr:last-child td{border-bottom:none}
+.ctable tr:hover td{background:rgba(201,151,58,.02)}
+.c{color:var(--gold)}.d{color:var(--text-dim);font-size:18px}
+/* FAQ */
+.faq-list{max-width:680px;margin:2rem auto 0}
+.faq-item{border-bottom:1px solid var(--border);padding:1.5rem 0}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{font-size:15px;font-weight:500;color:var(--gold-pale);margin-bottom:.75rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:20px;color:var(--gold);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:13px;color:var(--text-muted);line-height:1.8;display:none;font-weight:300}
+.faq-item.open .faq-a{display:block}
+/* FINAL CTA */
+.final-cta{text-align:center;padding:6rem 2rem;border-top:1px solid var(--border);position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,151,58,.06) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.final-cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+.final-eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.final-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,50px);font-weight:500;color:var(--gold-pale);line-height:1.15;margin-bottom:1rem}
+.final-body{font-size:14px;color:var(--text-muted);line-height:1.85;font-weight:300;margin-bottom:2.5rem}
+footer{background:var(--navy);border-top:1px solid var(--gold-border);padding:3rem 2rem;text-align:center}
+.footer-brand{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);margin-bottom:.5rem}
+.footer-tagline{font-size:14px;color:var(--text-muted);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:1.5rem}
+.footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.footer-links a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:12px;color:var(--text-dim)}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">The Unreleased Artist</a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/#work-with-me">Coaching</a></li>
+    <li><a href="/discovery-call.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">The Unreleased Artist</div>
+    <h1 class="hero-title"><span>Welcome to</span>The Inner Circle</h1>
+    <div class="divider-row"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+    <p class="hero-sub">For every music creative who has been doing this alone — whether you are working through something, building toward something, or simply wanting a genuine thinking and action partner alongside the work.</p>
+    <p class="hero-body">My voice in your ear every week. A monthly live call. A private community of music creatives doing the same work at every stage. The consistent presence of someone who understands your world, is invested in where you are going, and is genuinely alongside it.</p>
+    <div class="cta-group">
+      <a href="#tiers" class="btn-gold">Join the Inner Circle</a>
+      <a href="#whats-inside" class="btn-outline">See what's inside</a>
+    </div>
+  </div>
+</section>
+
+<!-- DISTINCTION -->
+<section class="distinction">
+  <div class="container">
+    <div class="distinction-inner">
+      <div class="eyebrow">What this is and what it isn't</div>
+      <div class="distinction-quote">The Inner Circle gives you the insight. The work of applying it is still yours to do.</div>
+      <p class="distinction-body">This membership is built around one thing — my consistent presence in your creative life. My voice, my perspective, my understanding of what it costs to do this alone. Every week, every month, reliably there.</p>
+      <p class="distinction-body">It is not a coaching relationship. It is not a course. It does not replace the structured tools, workbooks, or resources I create as standalone products. Think of it as the closest thing to having someone who truly understands your world in your corner — before you're ready for the full 1:1 experience.</p>
+      <div class="rule"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--text-dim);">Insight is what you get here. The tools for working through it are what you invest in separately. Both matter. In that order.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section id="whats-inside">
+  <div class="container">
+    <div class="eyebrow">What's inside</div>
+    <h2 class="section-h">My presence. Every week.</h2>
+    <p class="section-sub">Six things that make the Inner Circle worth showing up for. Not tools. Not frameworks. Me — consistently present in your creative life.</p>
+    <div class="what-grid">
+      <div class="what-card">
+        <div class="what-icon">🎙</div>
+        <div class="what-title">Weekly Audio from Me</div>
+        <div class="what-body">3 to 5 minutes. Recorded in the studio. Not a podcast — a voice note. Working through one idea that matters to solo music creatives right now. The most intimate content I create.</div>
+        <div class="what-note">New every week. Full archive included.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-icon">👥</div>
+        <div class="what-title">Monthly Live Group Call</div>
+        <div class="what-body">One hour. Live. Open Q&A with me every month. No agenda, no presentation. Real talk, real questions, the conversation you can't have anywhere else. Recorded for members who miss it.</div>
+        <div class="what-note">The closest thing to group coaching.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-icon">🔒</div>
+        <div class="what-title">Private Community</div>
+        <div class="what-body">A members-only space for solo music creatives doing the inner work. Not a noisy open forum. A focused, supportive environment where you're not alone in what you're carrying. I am active here.</div>
+        <div class="what-note">Members only. Always private.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-icon">🎯</div>
+        <div class="what-title">Monthly Focus Theme</div>
+        <div class="what-body">Each month has one theme — perfectionism, burnout, comparison, identity, momentum. The audio, the group call, and the community all revolve around it. Curated depth, not random content.</div>
+        <div class="what-note">One thing. All month. Gone deep.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-icon">✍</div>
+        <div class="what-title">Daily Check-In Prompt</div>
+        <div class="what-body">One question per day. The simple practice of showing up honestly for the work before you open a session or start your day. Not a framework — a prompt. A moment of honest reflection.</div>
+        <div class="what-note">Simple. Daily. Yours.</div>
+      </div>
+      <div class="what-card">
+        <div class="what-icon">⚡</div>
+        <div class="what-title">Early Access and Member Rates</div>
+        <div class="what-body">Members hear about new content and products before anyone else — and always get a members-only rate when something new drops. Books, workbooks, courses, events. First in, best rate.</div>
+        <div class="what-note">Always first. Always a better rate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section class="tiers-section" id="tiers">
+  <div class="container">
+    <div class="eyebrow">Choose your level</div>
+    <h2 class="section-h">Three ways to be part of it.</h2>
+    <p class="section-sub">Start free. Go deeper when you're ready. Coaching clients get everything included at no extra cost.</p>
+    <div class="tiers-grid">
+
+      <!-- FREE -->
+      <div class="tier-card">
+        <div class="tier-price">Free</div>
+        <div class="tier-name">The Community</div>
+        <div class="tier-sub">For every music creative</div>
+        <p class="tier-desc">Start here. No card required. Access to the content, the daily prompt, and a taste of what the Inner Circle feels like before you commit.</p>
+        <div class="tier-features">
+          <div class="tf"><span class="chk">✓</span>Blog and articles</div>
+          <div class="tf"><span class="chk">✓</span>Public YouTube content</div>
+          <div class="tf"><span class="chk">✓</span>Daily quote feed</div>
+          <div class="tf"><span class="chk">✓</span>One daily check-in prompt</div>
+          <div class="tf"><span class="chk">✓</span>One audio from me per month</div>
+          <div class="tf dim"><span class="chk">—</span>Full audio archive</div>
+          <div class="tf dim"><span class="chk">—</span>Monthly group call</div>
+          <div class="tf dim"><span class="chk">—</span>Private community</div>
+          <div class="tf dim"><span class="chk">—</span>Monthly focus theme</div>
+          <div class="tf dim"><span class="chk">—</span>Early access and member rates</div>
+        </div>
+        <a href="/members.html" class="tcta cta-ghost">Join free</a>
+      </div>
+
+      <!-- INNER CIRCLE -->
+      <div class="tier-card featured">
+        <div class="tier-badge">Most popular</div>
+        <div class="tier-price">$19<span>/month</span></div>
+        <div class="tier-name">The Inner Circle</div>
+        <div class="tier-sub">For the serious solo creative</div>
+        <p class="tier-desc">My voice every week. Monthly live calls. Private community. The consistent presence of someone who understands your world — before you're ready for 1:1 coaching.</p>
+        <div class="tier-features">
+          <div class="tf"><span class="chk">✓</span>Everything in Free</div>
+          <div class="tf"><span class="chk">✓</span>Weekly audio — new every week</div>
+          <div class="tf"><span class="chk">✓</span>Full audio archive — all past episodes</div>
+          <div class="tf"><span class="chk">✓</span>Monthly live group call with me</div>
+          <div class="tf"><span class="chk">✓</span>Call recordings — never miss one</div>
+          <div class="tf"><span class="chk">✓</span>Private community access</div>
+          <div class="tf"><span class="chk">✓</span>Monthly focus theme</div>
+          <div class="tf"><span class="chk">✓</span>Early access to new releases</div>
+          <div class="tf"><span class="chk">✓</span>Members-only rate on all products</div>
+          <div class="tf dim"><span class="chk">—</span>1:1 coaching sessions</div>
+          <div class="tf dim"><span class="chk">—</span>Personal goal tracking</div>
+          <div class="tf dim"><span class="chk">—</span>Direct access to me</div>
+        </div>
+        <a href="https://patreon.com/theunreleasedartist" target="_blank" rel="noopener" class="tcta cta-gold">Join the Inner Circle</a>
+      </div>
+
+      <!-- COACHING -->
+      <div class="tier-card">
+        <div class="tier-price" style="font-size:28px;margin-top:10px;">Coaching</div>
+        <div class="tier-name">The Full Experience</div>
+        <div class="tier-sub">Active coaching clients</div>
+        <p class="tier-desc">In The Session, The Progression, or The Release? Inner Circle access is included in your coaching investment. Everything here plus the full 1:1 experience.</p>
+        <div class="tier-features">
+          <div class="tf"><span class="chk">✓</span>Everything in The Inner Circle</div>
+          <div class="tf"><span class="chk">✓</span>1:1 weekly coaching sessions</div>
+          <div class="tf"><span class="chk">✓</span>Personal goal and task tracking</div>
+          <div class="tf"><span class="chk">✓</span>Full coaching portal access</div>
+          <div class="tf"><span class="chk">✓</span>Direct messaging with me</div>
+          <div class="tf"><span class="chk">✓</span>Between-session check-ins</div>
+          <div class="tf"><span class="chk">✓</span>Release tracker</div>
+          <div class="tf"><span class="chk">✓</span>Inner Circle — no extra cost</div>
+        </div>
+        <a href="/discovery-call.html" class="tcta cta-outline">Book a discovery call</a>
+      </div>
+
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--text-dim);margin-top:1.5rem;line-height:1.7;">Cancel your Inner Circle membership anytime. No contracts. No questions asked.</p>
+  </div>
+</section>
+
+<!-- AUDIO -->
+<section class="audio-section">
+  <div class="container">
+    <div class="audio-grid">
+      <div>
+        <div class="audio-eyebrow">Weekly audio</div>
+        <h2 class="audio-title">My voice. Every week.</h2>
+        <p class="audio-body">Not a podcast. Not a lecture. A voice note — recorded in the studio when something is real and present and worth saying. 3 to 5 minutes. One idea. The most intimate content I create.</p>
+        <p class="audio-body">Members get a new episode every week and full access to everything ever recorded. One free episode available every month so you can hear what it sounds like before you join.</p>
+      </div>
+      <div>
+        <div class="audio-ep"><div class="ep-num">01</div><div class="ep-info"><div class="ep-title">Why I built this — the real story</div><div class="ep-dur">4 min 12 sec</div></div><div class="ep-status free">▶ Free</div></div>
+        <div class="audio-ep"><div class="ep-num">02</div><div class="ep-info"><div class="ep-title">The 2am session. What it actually feels like.</div><div class="ep-dur">3 min 48 sec</div></div><div class="ep-status">🔒 Members</div></div>
+        <div class="audio-ep"><div class="ep-num">03</div><div class="ep-info"><div class="ep-title">On perfectionism. What I finally understood.</div><div class="ep-dur">5 min 02 sec</div></div><div class="ep-status">🔒 Members</div></div>
+        <div class="audio-ep"><div class="ep-num">04</div><div class="ep-info"><div class="ep-title">The folder of almost-finished things.</div><div class="ep-dur">4 min 31 sec</div></div><div class="ep-status">🔒 Members</div></div>
+        <div class="audio-ep"><div class="ep-num">05</div><div class="ep-info"><div class="ep-title">Creativity as something that moves through you.</div><div class="ep-dur">3 min 55 sec</div></div><div class="ep-status">🔒 Members</div></div>
+        <div class="audio-ep" style="border-color:transparent;background:transparent;justify-content:center;"><div style="font-size:12px;color:var(--text-dim);">New every week for members →</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MONTHLY THEME -->
+<section class="theme-section">
+  <div class="container">
+    <div class="eyebrow">Monthly focus</div>
+    <h2 class="section-h">One theme. All month. Gone deep.</h2>
+    <p class="section-sub">Each month the audio, the group call, and the community all focus on one inner work theme. Curated depth over random content — always.</p>
+    <div class="theme-grid">
+      <div class="theme-card"><div class="theme-month">Month 01</div><div class="theme-name">Perfectionism</div><div class="theme-desc">What it really is and what it's actually protecting.</div></div>
+      <div class="theme-card"><div class="theme-month">Month 02</div><div class="theme-name">Burnout</div><div class="theme-desc">The empty well. What depletes it and how to refill it.</div></div>
+      <div class="theme-card current"><div class="theme-month">Month 03</div><div class="theme-name">Identity</div><div class="theme-desc">Who you believe you are and what that makes possible.</div><div class="current-badge">Current month</div></div>
+      <div class="theme-card"><div class="theme-month">Month 04</div><div class="theme-name">Momentum</div><div class="theme-desc">How to build it, lose it, and find it when it's gone.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GROUP CALL -->
+<section class="group-section">
+  <div class="container">
+    <div class="group-inner">
+      <div class="eyebrow">Monthly live call</div>
+      <div class="group-quote">One hour. Live. Just us. Ask anything.</div>
+      <p class="group-body">Every month Inner Circle members get on a live call with me. No agenda, no slides. Real talk, real questions, the kind of conversation you can't have anywhere else. Small enough to feel personal. Real enough to actually help.</p>
+      <p class="group-body">Recorded for members who can't attend live. Never miss one.</p>
+      <a href="https://patreon.com/theunreleasedartist" target="_blank" rel="noopener" class="btn-gold">Join to get access</a>
+    </div>
+  </div>
+</section>
+
+<!-- NOT INCLUDED -->
+<section class="not-included">
+  <div class="container">
+    <div class="not-included-inner">
+      <div class="eyebrow" style="text-align:center;">Honest about what this isn't</div>
+      <div class="ni-title">What the Inner Circle doesn't include.</div>
+      <div class="ni-sub">Some things belong in a deeper container. The Inner Circle is insight and presence. The structured tools, the personalised accountability, and the 1:1 relationship live somewhere else — and they're worth more because of it.</div>
+      <div class="ni-item"><div class="ni-icon">🚫</div><div><strong>1:1 coaching sessions</strong><p>Personal coaching — the sessions, the accountability, me embedded in your specific journey — requires a coaching relationship. That's a different conversation. Book a discovery call when you're ready.</p></div></div>
+      <div class="ni-item"><div class="ni-icon">🚫</div><div><strong>Structured workbooks and frameworks</strong><p>The Inner Circle gives you insight. The structured tools for working through specific challenges — the workbooks, the deep frameworks, the step-by-step processes — are standalone products. Members always get them first at a members-only rate.</p></div></div>
+      <div class="ni-item"><div class="ni-icon">🚫</div><div><strong>Personal goal and project tracking</strong><p>The coaching portal — goals, tasks, release tracker, direct messaging with me — is for active coaching clients. It's where personalised, held accountability lives.</p></div></div>
+      <div class="ni-item"><div class="ni-icon">🚫</div><div><strong>Direct personal access to me</strong><p>I am present in the community and on the monthly calls. But personal, direct access is part of the coaching tiers. The Inner Circle is a group experience built around Daniel's presence — not a 1:1 one.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare-section">
+  <div class="container">
+    <div class="eyebrow">Compare</div>
+    <h2 class="section-h">What's included at each level.</h2>
+    <div style="overflow-x:auto;margin-top:2rem;">
+      <table class="ctable">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th class="feat">Inner Circle</th>
+            <th>Coaching</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Blog and articles</td><td><span class="c">✓</span></td><td><span class="c">✓</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Daily check-in prompt</td><td><span class="c">✓</span></td><td><span class="c">✓</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Audio from me</td><td>1 per month</td><td><span class="c">Weekly + archive</span></td><td><span class="c">Weekly + archive</span></td></tr>
+          <tr><td>Monthly group call</td><td><span class="d">—</span></td><td><span class="c">✓ + recordings</span></td><td><span class="c">✓ + recordings</span></td></tr>
+          <tr><td>Private community</td><td><span class="d">—</span></td><td><span class="c">✓</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Monthly focus theme</td><td><span class="d">—</span></td><td><span class="c">✓</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Early access + member rates</td><td><span class="d">—</span></td><td><span class="c">✓</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>1:1 coaching sessions</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Personal goal tracking</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Direct access to me</td><td><span class="d">—</span></td><td><span class="d">—</span></td><td><span class="c">✓</span></td></tr>
+          <tr><td>Workbooks and frameworks</td><td><span class="d">—</span></td><td>Member rate</td><td>Member rate</td></tr>
+          <tr>
+            <td></td>
+            <td><a href="/members.html" class="tcta cta-ghost" style="display:inline-block;padding:8px 16px;font-size:10px;">Join free</a></td>
+            <td><a href="https://patreon.com/theunreleasedartist" target="_blank" rel="noopener" class="tcta cta-gold" style="display:inline-block;padding:8px 16px;font-size:10px;">$19/month</a></td>
+            <td><a href="/discovery-call.html" class="tcta cta-outline" style="display:inline-block;padding:8px 16px;font-size:10px;">Book a call</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Questions</div>
+    <h2 class="section-h">Frequently asked.</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this the same as 1:1 coaching?</div><div class="faq-a">No. The Inner Circle is my consistent presence in a group format — his voice, his perspective, his community. Coaching is a personalised relationship where I am embedded in your specific journey with accountability, plans, and direct access. Both matter. They serve different needs at different stages.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will the membership replace buying my products?</div><div class="faq-a">No — and that's intentional. The Inner Circle gives you insight. The products give you structured tools for working through specific challenges. The membership makes you want the products. The products give you something the membership can't — a structured process you work through yourself at depth.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who is the Inner Circle for?</div><div class="faq-a">Any music creative at any stage — musician, producer, engineer, songwriter, music entrepreneur, or someone who hasn't started yet. If you've been doing this alone and you want more than free content but aren't ready for 1:1 coaching, this is the right next step.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I cancel anytime?</div><div class="faq-a">Yes. No contracts, no questions. Cancel whenever you want and you keep access until the end of your billing period.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if I become a coaching client?</div><div class="faq-a">Your Inner Circle membership is included with any coaching tier. You don't pay for both — the membership is absorbed into your coaching investment. You get everything in the Inner Circle plus everything in your coaching tier.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is $19 a month worth it?</div><div class="faq-a">One reframe from the weekly audio that shifts how you see what's been stopping you is worth more than $19. One question answered on the monthly call that moves something stuck is worth more than $19. If you show up for it, it's worth it. That part is yours to decide.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="final-eyebrow">Ready to stop doing it alone?</div>
+    <h2 class="final-title">Join the Inner Circle.</h2>
+    <p class="final-body">$19 a month. Cancel anytime. My voice every week, a live call every month, and a community of people who actually get it. The closest thing to not doing this alone — before you're ready for coaching.</p>
+    <div class="cta-group">
+      <a href="https://patreon.com/theunreleasedartist" target="_blank" rel="noopener" class="btn-gold">Join for $19/month</a>
+      <a href="/members.html" class="btn-outline">Start free</a>
+    </div>
+    <p style="font-size:11px;color:var(--text-dim);margin-top:1.5rem;">Not ready for the membership? <a href="/discovery-call.html" style="color:var(--gold);text-decoration:none;">Book a free 15-minute discovery call</a> instead.</p>
+  </div>
+</section>
+
+<footer>
+    <!-- FOOTER EMAIL SIGNUP -->
+    <div id="footer-signup" style="background:#141414; border:1px solid rgba(201,151,58,0.22); border-radius:8px; padding:2.5rem 2rem; max-width:540px; margin:0 auto 3rem; text-align:center;">
+      <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#c9973a; margin-bottom:0.75rem;">Stay in the loop</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#f0d9a8; line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
+      <p style="font-size:13px; color:rgba(240,217,168,0.7); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
+      <div id="fs-form" style="display:flex; border:1px solid rgba(201,151,58,0.25); border-radius:3px; overflow:hidden; max-width:400px; margin:0 auto 0.75rem;">
+        <input type="email" id="fs-email" placeholder="Your email address" style="flex:1; background:#080808; border:none; padding:13px 16px; font-family:'Montserrat',sans-serif; font-size:13px; color:#f0d9a8; outline:none; min-width:0;" onkeydown="if(event.key==='Enter') fsSignup()"/>
+        <button onclick="fsSignup()" style="background:#c9973a; color:#080808; border:none; padding:13px 18px; font-family:'Montserrat',sans-serif; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; white-space:nowrap; flex-shrink:0;">Join the list</button>
+      </div>
+      <div id="fs-success" style="display:none; font-family:'Cormorant Garamond',serif; font-size:18px; font-style:italic; color:#c9973a;">You are in. See you in your inbox.</div>
+    </div>
+    <script>function fsSignup(){var e=document.getElementById("fs-email").value.trim();if(!e||!e.includes("@")){document.getElementById("fs-email").focus();return;}document.getElementById("fs-form").style.display="none";document.getElementById("fs-success").style.display="block";}</script>
+
+  <div class="footer-brand">The Unreleased Artist</div>
+  <div class="footer-tagline">It's not about the music. It's about you.</div>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/#work-with-me">Coaching</a>
+    <a href="/inner-circle.html">Inner Circle</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/members.html">Members</a>
+    <a href="/discovery-call.html">Book a Call</a>
+    <a href="mailto:connect@theunreleasedartist.com">connect@theunreleasedartist.com</a>
+    <a href="https://www.instagram.com/theunreleasedartist" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@theunreleasedartist" target="_blank" rel="noopener">TikTok</a>
+    <a href="https://www.youtube.com/@theunreleasedartist" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://patreon.com/theunreleasedartist" target="_blank" rel="noopener">Patreon</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved.</p>
+</footer>
+</body>
+</html>

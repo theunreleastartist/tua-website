@@ -4,18 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client Portal — The Unreleased Artist</title>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+  <meta name="theme-color" content="#080808"/>
+  <link rel="canonical" href="https://theunreleasedartist.com/client-login.html"/>
+  <meta name="description" content="For active 1:1 clients of The Unreleased Artist."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="The Unreleased Artist"/>
+  <meta property="og:title" content="Client Portal"/>
+  <meta property="og:description" content="For active 1:1 clients of The Unreleased Artist."/>
+  <meta property="og:url" content="https://theunreleasedartist.com/client-login.html"/>
+  <meta property="og:image" content="https://theunreleasedartist.com/og-image.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Unreleased Artist. It's not about the music. It's about you."/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Client Portal"/>
+  <meta name="twitter:description" content="For active 1:1 clients of The Unreleased Artist."/>
+  <meta name="twitter:image" content="https://theunreleasedartist.com/og-image.jpg"/>
+  <meta name="robots" content="noindex, follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --gold: #c9973a;
-      --gold-light: #e0b86a;
-      --navy: #0d1117;
-      --navy-light: #141b24;
-      --text: #e8e0d4;
-      --text-muted: #8a8070;
-      --text-dim: #b0a898;
-      --gold-tint: rgba(201,151,58,0.05);
-      --gold-border: rgba(201,151,58,0.2);
+        :root {
+      /* page + section tones */
+      --black:       #080808;
+      --navy:        #080808;
+      --navy-mid:    #0e0e0e;
+      --navy-light:  #161616;
+      --navy-card:   #141414;
+      /* gold */
+      --gold:        #c9973a;
+      --gold-light:  #e2b96a;
+      --gold-pale:   #f0d9a8;
+      --gold-dim:    rgba(201,151,58,0.22);
+      --gold-tint:   rgba(201,151,58,0.05);
+      --border:      rgba(201,151,58,0.16);
+      --gold-border: rgba(201,151,58,0.42);
+      /* text */
+      --text:        #f0d9a8;
+      --text-muted:  rgba(240,217,168,0.82);
+      --text-dim:    rgba(240,217,168,0.58);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,111 +63,6 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--gold-tint);
-      border-bottom: 1px solid rgba(201,151,58,0.15);
-      padding: 0 2rem;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: var(--gold);
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--gold); }
-
-    .nav-links a.nav-cta {
-      color: var(--gold);
-      border: 1px solid rgba(201,151,58,0.4);
-      padding: 0.4rem 1rem;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .nav-links a.nav-cta:hover {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-      background: none;
-      border: none;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text-dim);
-      transition: all 0.3s;
-    }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 64px; left: 0; right: 0;
-      background: var(--gold-tint);
-      border-bottom: 1px solid rgba(201,151,58,0.15);
-      padding: 1.5rem 2rem;
-      z-index: 99;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .mobile-menu.open { display: flex; }
-
-    .mobile-menu a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .mobile-menu a.cta {
-      color: var(--gold);
-      border: 1px solid rgba(201,151,58,0.4);
-      text-align: center;
-      padding: 0.7rem;
-      margin-top: 0.5rem;
     }
 
     /* MAIN */
@@ -349,166 +276,269 @@
       color: var(--navy);
     }
 
-    /* FOOTER */
-    footer {
-      background: var(--gold-tint);
-      border-top: 1px solid rgba(201,151,58,0.1);
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover { color: var(--gold); }
-
-    .footer-copy {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-    }
-
     /* RESPONSIVE */
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
       .login-card { padding: 2rem 1.5rem; }
     }
-  </style>
+  
+    /* ══════ CANONICAL SHELL — matches index.html ══════ */
+    body { background: var(--black); color: var(--text); font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 3rem; height: auto;
+      background: var(--navy-light);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gold-border);
+      display: block;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 70px;
+    }
+    .nav-brand { text-decoration: none; display: flex; align-items: center; }
+    .nav-brand img {
+      height: 50px; width: auto; object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(201,151,58,0.2));
+      transition: filter 0.2s;
+    }
+    .nav-brand img:hover { filter: drop-shadow(0 0 14px rgba(201,151,58,0.4)); }
+    .nav-brand-fallback {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 600; color: var(--gold); letter-spacing: 0.06em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; margin: 0; padding: 0; }
+    .nav-links a {
+      font-size: 13px; font-weight: 500; color: var(--text);
+      text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: color 0.2s; border: none; padding: 0;
+    }
+    .nav-links a:hover { color: var(--gold); background: none; }
+    .nav-links a.nav-cta {
+      border: 1px solid var(--gold-border); color: var(--gold);
+      padding: 8px 20px; border-radius: 2px; transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a.nav-cta:hover { background: var(--gold-dim); color: var(--gold); }
+    .nav-links a.nav-join {
+      color: var(--gold); border: 1px solid var(--gold-border);
+      padding: 6px 14px; border-radius: 2px; font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+    }
+    .nav-links a.nav-join:hover { background: var(--gold-dim); }
+    .nav-social-group { display: flex; align-items: center; gap: 14px; }
+    .nav-social { color: var(--text-dim); display: flex; align-items: center; transition: color 0.2s; text-decoration: none; border: none; padding: 0; }
+    .nav-social:hover { color: var(--gold); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 8px; background: none; border: none; z-index: 200;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: var(--navy-light); border-bottom: 1px solid var(--gold-border);
+      padding: 1.5rem 2rem; z-index: 99; flex-direction: column; gap: 0;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border); transition: color 0.2s;
+      border-left: none; border-right: none; border-top: none; text-align: left;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .mobile-cta {
+      margin-top: 1rem; background: var(--gold); color: var(--black);
+      text-align: center; padding: 12px; border-radius: 2px; font-weight: 700; border-bottom: none;
+    }
+    .mobile-social-row { display: flex; gap: 1.5rem; padding: 1rem 0 0.5rem; align-items: center; }
+    .mobile-social-row a { border-bottom: none !important; padding: 0 !important; color: var(--text-muted); }
+
+    footer {
+      background: var(--navy); border-top: 1px solid var(--gold-border);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--gold); letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 15px; color: var(--text-muted); font-style: italic; font-family: 'Cormorant Garamond', serif; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .footer-links a { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-sep { opacity: .45; color: var(--gold); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); opacity: 0.7; }
+
+    @media (max-width: 900px) { .nav-links { gap: 1.25rem; } }
+    @media (max-width: 768px) { nav { padding: 0 1.5rem; } }
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+    }
+    /* ══════ END CANONICAL SHELL ══════ */
+</style>
+  <script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
 </head>
 <body>
 
-  <!-- NAV -->
+    <!-- NAV -->
   <nav>
-    <a href="/index.html" class="nav-brand">The Unreleased Artist</a>
-    <ul class="nav-links">
-      <li><a href="/index.html#about">About</a></li>
-      <li><a href="/work-with-me.html">Work With Me</a></li>
-      <li><a href="/inner-circle.html">Inner Circle</a></li>
-      <li><a href="/blog.html">The Writing</a></li>
-      <li><a href="/discovery-call.html" class="nav-cta">Book a Call</a></li>
-    </ul>
-    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <img src="logo.png" alt="The Unreleased Artist"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"/>
+        <span class="nav-brand-fallback" style="display:none;">The Unreleased Artist</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/index.html#about">About</a></li>
+        <li><a href="/work-with-me.html">Work With Me</a></li>
+        <li><a href="/inner-circle.html">Inner Circle</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/client-login.html">Members</a></li>
+        <li class="nav-social-group">
+          <a href="https://www.instagram.com/theunreleasedartist" target="_blank" rel="noopener" class="nav-social" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.tiktok.com/@theunreleasedartist" target="_blank" rel="noopener" class="nav-social" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+          <a href="https://www.youtube.com/@theunreleasedartist" target="_blank" rel="noopener" class="nav-social" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.39.57A3 3 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12C4.46 20.5 12 20.5 12 20.5s7.54 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/></svg></a>
+        </li>
+        <li><a href="#footer-signup" class="nav-join">Join the list</a></li>
+        <li><a href="/discovery-call.html" class="nav-cta">Book a Call</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
-  <div class="mobile-menu">
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/">Home</a>
     <a href="/index.html#about">About</a>
     <a href="/work-with-me.html">Work With Me</a>
     <a href="/inner-circle.html">Inner Circle</a>
-    <a href="/blog.html">The Writing</a>
-    <a href="/discovery-call.html" class="cta">Book a Call</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/client-login.html">Members</a>
+    <div class="mobile-social-row">
+      <a href="https://www.instagram.com/theunreleasedartist" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.tiktok.com/@theunreleasedartist" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+      <a href="https://www.youtube.com/@theunreleasedartist" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.39.57A3 3 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12C4.46 20.5 12 20.5 12 20.5s7.54 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/></svg></a>
+      
+    </div>
+    <a href="#footer-signup" style="color:var(--gold);">Join the list</a>
+    <a href="/discovery-call.html" class="mobile-cta">Book a Free Discovery Call</a>
   </div>
 
-  <!-- MAIN -->
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('open');
+    }
+    document.querySelectorAll('.mobile-menu a').forEach(function (l) {
+      l.addEventListener('click', function () {
+        document.getElementById('mobile-menu').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('open');
+      });
+    });
+  </script>
+<!-- MAIN -->
   <main>
     <div class="login-wrap">
 
       <p class="login-eyebrow">Client Portal</p>
       <h1 class="login-heading">Welcome <em>back.</em></h1>
       <div class="divider-line"></div>
-      <p class="login-subtext">This space is for active coaching clients. Sign in to access your session notes, resources, and everything from our work together.</p>
+      <p class="login-subtext">This space is for active 1:1 clients. Everything from our work together lives here.</p>
 
       <div class="login-card">
 
-        <div class="form-group">
-          <label class="form-label" for="email">Email address</label>
-          <input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" />
+        <!-- ══ PORTAL NOT LIVE YET ══ -->
+        <div id="portal-soon">
+          <p style="font-size:14px; color:var(--text-dim); line-height:1.85; margin-bottom:1.5rem;">The client portal is being built. Until it is ready, everything from our work together comes to you directly from me, the way it always has.</p>
+          <p style="font-size:14px; color:var(--text-dim); line-height:1.85; margin-bottom:1.75rem;">Need your session notes, a resource, or anything else? Write to me and I will send it straight back.</p>
+          <a href="mailto:daniel@theunreleasedartist.com?subject=Client%20request" class="btn-login" style="display:block; text-align:center; text-decoration:none;">Email me directly</a>
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="password">Password</label>
-          <input class="form-input" type="password" id="password" placeholder="Your password" autocomplete="current-password" />
+        <!-- ══ REAL LOGIN — hidden until PORTAL_LIVE = true ══ -->
+        <div id="portal-login" style="display:none;">
+          <div class="form-group">
+            <label class="form-label" for="email">Email address</label>
+            <input class="form-input" type="email" id="email" placeholder="you@example.com" autocomplete="email"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-input" type="password" id="password" placeholder="Your password" autocomplete="current-password"/>
+          </div>
+          <div class="form-footer-row">
+            <label class="remember-label"><input type="checkbox" id="remember"/> Keep me signed in</label>
+            <a href="mailto:connect@theunreleasedartist.com?subject=Client Portal Access" class="forgot-link">Need help signing in?</a>
+          </div>
+          <button class="btn-login" onclick="handleLogin()">Sign in</button>
+          <p class="form-error" id="login-error">That email and password combination didn't work. Try again or reach out for help.</p>
         </div>
 
-        <div class="form-footer-row">
-          <label class="remember-label">
-            <input type="checkbox" id="remember" />
-            Keep me signed in
-          </label>
-          <a href="mailto:connect@theunreleasedartist.com?subject=Client Portal Access" class="forgot-link">Need help signing in?</a>
-        </div>
-
-        <button class="btn-login" onclick="handleLogin()">Sign in</button>
-
-        <p class="form-error" id="login-error">That email and password combination didn't work. Try again or reach out for help.</p>
-
-        <hr class="card-divider" />
+        <hr class="card-divider"/>
 
         <div class="not-a-client">
-          <p>Not a coaching client yet? A discovery call is the first step. It's free, it's 15 minutes, and there's no pressure.</p>
+          <p>Not working with me 1:1 yet? A discovery call is the first step. It's free, it's 15 minutes, and there's no pressure.</p>
           <a href="/discovery-call.html">Book a discovery call</a>
         </div>
 
       </div>
-
     </div>
   </main>
 
-  <!-- FOOTER -->
+    <!-- FOOTER -->
   <footer>
-    <p class="footer-brand">The Unreleased Artist</p>
-    <div class="footer-links">
-      <a href="/index.html#about">About</a>
-      <a href="/work-with-me.html">Work With Me</a>
-      <a href="/inner-circle.html">Inner Circle</a>
-      <a href="/blog.html">The Writing</a>
-      <a href="/discovery-call.html">Book a Call</a>
-      <a href="https://www.patreon.com/theunreleasedartist" target="_blank" rel="noopener">Patreon</a>
-      <a href="mailto:connect@theunreleasedartist.com">connect@theunreleasedartist.com</a>
+
+    <!-- FOOTER EMAIL SIGNUP — Hostinger Reach -->
+    <div id="footer-signup" style="background:var(--navy-card); border:1px solid var(--gold-border); border-radius:8px; padding:2.5rem 2rem; max-width:540px; margin:0 auto 3rem; text-align:center;">
+      <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Stay in the loop</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--gold-pale); line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
+      <p style="font-size:13px; color:var(--text-muted); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
+      <div style="max-width:400px; margin:0 auto;"><div data-reach-form="542463a5-d5fb-4375-877b-6c835aa386c4"></div></div>
     </div>
-    <p class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved.</p>
+
+    <div class="footer-brand">
+      <img src="logo.png" alt="The Unreleased Artist" style="width:220px; height:auto; display:block; margin:0 auto 0.5rem; filter:drop-shadow(0 0 8px rgba(201,151,58,0.2));"
+           onerror="this.style.display='none'; this.parentElement.textContent='The Unreleased Artist';"/>
+    </div>
+    <div class="footer-tagline">It's not about the music. It's about you.</div>
+    <div class="footer-links">
+      <a href="/index.html#about">About</a><span class="footer-sep">•</span><a href="/work-with-me.html">Work With Me</a><span class="footer-sep">•</span><a href="/blog.html">Blog</a><span class="footer-sep">•</span><a href="/inner-circle.html">Inner Circle</a><span class="footer-sep">•</span><a href="/client-login.html">Members</a><span class="footer-sep">•</span><a href="/discovery-call.html">Book a Call</a><span class="footer-sep">•</span><a href="mailto:connect@theunreleasedartist.com">connect@theunreleasedartist.com</a><span class="footer-sep">•</span><a href="https://www.instagram.com/theunreleasedartist" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><span class="footer-sep">•</span><a href="https://www.tiktok.com/@theunreleasedartist" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a><span class="footer-sep">•</span><a href="https://www.youtube.com/@theunreleasedartist" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3 3 0 0 0-2.11-2.12C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.39.57A3 3 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3 3 0 0 0 2.11 2.12C4.46 20.5 12 20.5 12 20.5s7.54 0 9.39-.57a3 3 0 0 0 2.11-2.12A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.75 15.52V8.48L15.5 12l-5.75 3.52z"/></svg></a><span class="footer-sep">•</span>
+    </div>
+    <p class="footer-copy">&copy; 2026 The Unreleased Artist. All rights reserved. <span class="footer-sep">·</span> <a href="/privacy.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Privacy</a> <span class="footer-sep">·</span> <a href="/terms.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Terms</a></p>
   </footer>
 
   <script>
-    function handleLogin() {
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value;
-      const error = document.getElementById('login-error');
+    /* ─────────────────────────────────────────────────────────────
+       Flip this to true once Supabase auth is wired and
+       client-portal.html exists. Nothing else needs to change.
+       ───────────────────────────────────────────────────────────── */
+    const PORTAL_LIVE = false;
 
-      error.classList.remove('visible');
-
-      if (!email || !password) {
-        error.classList.add('visible');
-        return;
-      }
-
-      // TODO: connect to Supabase auth
-      // supabase.auth.signInWithPassword({ email, password })
-      //   .then(({ data, error }) => {
-      //     if (error) showError();
-      //     else window.location.href = '/client-portal.html';
-      //   });
-
-      // Placeholder — remove once Supabase is wired
-      error.classList.add('visible');
+    if (PORTAL_LIVE) {
+      document.getElementById('portal-soon').style.display  = 'none';
+      document.getElementById('portal-login').style.display = 'block';
     }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') handleLogin();
+    function handleLogin() {
+      if (!PORTAL_LIVE) return;
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const error    = document.getElementById('login-error');
+      error.classList.remove('visible');
+      if (!email || !password) { error.classList.add('visible'); return; }
+
+      // supabase.auth.signInWithPassword({ email, password })
+      //   .then(({ data, error: err }) => {
+      //     if (err) error.classList.add('visible');
+      //     else window.location.href = '/client-portal.html';
+      //   });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && PORTAL_LIVE) handleLogin();
     });
   </script>
 

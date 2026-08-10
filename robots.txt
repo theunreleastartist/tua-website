@@ -1,0 +1,12 @@
+# Crawling is allowed on purpose. The site sends X-Robots-Tag: noindex
+# from .htaccess, and Google can only obey that if it is allowed to read
+# the page. Blocking here would make the noindex invisible.
+User-agent: *
+Allow: /
+
+# Conversion + private pages — no need to index these
+Disallow: /thank-you.html
+Disallow: /client-login.html
+Disallow: /start.html
+
+Sitemap: https://theunreleasedartist.com/sitemap.xml
