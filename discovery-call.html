@@ -305,6 +305,60 @@ nav {
   border-radius: 3px;
 }
 
+/* ── BOOKING CTA (own booking page, replaces the old embed) ── */
+.booking-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+.booking-cta-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(201,151,58,0.10);
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.booking-cta h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--gold-pale);
+  margin-bottom: 0.75rem;
+}
+.booking-cta p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 420px;
+  margin-bottom: 1.75rem;
+}
+.booking-cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #080808;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.1rem 2.5rem;
+  border-radius: 4px;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.booking-cta-btn:hover { opacity: .9; transform: translateY(-1px); }
+.booking-cta p.booking-cta-note {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 1.25rem;
+  margin-bottom: 0;
+}
+/* The old embed reserved 600px for an iframe; the CTA sizes itself. */
+.booking-embed-wrap { min-height: 0; }
+
 /* ── PRE-BOOKING FORM ── */
 .prebook-section {
   background: var(--navy);
@@ -517,7 +571,6 @@ footer {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 </style>
-  <script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
 </head>
 <body>
 
@@ -574,100 +627,12 @@ footer {
   <div class="booking-title">Pick a slot that works for you</div>
 
   <div class="booking-embed-wrap">
-    <!-- ═══════════════════════════════════════════════════════ -->
-    <!-- CALENDLY INLINE BOOKING WIDGET                         -->
-    <!-- ═══════════════════════════════════════════════════════ -->
-
-    <!-- Calendly inline widget begin -->
-    <div class="calendly-inline-widget"
-         data-url="https://calendly.com/daniel-theunreleasedartist/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=f0d9a8&primary_color=c9973a"
-         style="min-width:320px;height:700px;">
-    </div>
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <!-- Calendly inline widget end -->
-
-  </div>
-</section>
-
-<!-- PRE-BOOKING FORM -->
-<section class="prebook-section">
-  <div class="prebook-inner">
-
-    <div id="prebook-form-wrap">
-      <div class="prebook-label">Before we meet</div>
-      <div class="prebook-title">Tell me a little about where you are</div>
-      <div class="prebook-sub">This is optional but it helps me arrive at the call knowing your context. Takes two minutes. Everything you share stays between us.</div>
-
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Your name</label>
-          <input type="text" class="form-input" id="pre-name" placeholder="First name"/>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" id="pre-email" placeholder="your@email.com"/>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Your role in music</label>
-        <select class="form-select" id="pre-role">
-          <option value="">Select the one that fits best</option>
-          <option>Musician / Singer</option>
-          <option>Producer</option>
-          <option>Songwriter</option>
-          <option>Audio Engineer</option>
-          <option>Music Entrepreneur</option>
-          <option>Multiple roles</option>
-          <option>I haven't started yet</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">How long have you been doing this?</label>
-        <select class="form-select" id="pre-experience">
-          <option value="">Select...</option>
-          <option>I'm just starting</option>
-          <option>Less than 2 years</option>
-          <option>2 to 5 years</option>
-          <option>5 to 10 years</option>
-          <option>More than 10 years</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">What's in the way right now, or what are you trying to build?</label>
-        <textarea class="form-textarea" id="pre-block" placeholder="Be honest. There's no wrong answer. This helps me understand where you actually are before we talk."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">What would a successful outcome from this call look like for you?</label>
-        <textarea class="form-textarea" id="pre-outcome" placeholder="What would make this 15 minutes worth your time?" style="min-height:80px;"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Anything else you want me to know before the call?</label>
-        <textarea class="form-textarea" id="pre-other" placeholder="Completely optional." style="min-height:70px;"></textarea>
-      </div>
-
-      <button class="submit-btn" onclick="submitPrebook()">Submit — I'll see you on the call</button>
-
-      <p style="font-size:11px; color:var(--text-dim); text-align:center; margin-top:1rem; line-height:1.7;">
-        Your information stays private. It's used only to prepare for your discovery call.
-      </p>
-    </div>
-
-    <!-- SUCCESS STATE -->
-    <div class="success-state" id="prebook-success">
-      <div class="success-icon">✓</div>
-      <div class="success-title">You're all set.</div>
-      <p class="success-body">Your pre-call notes have been received. I will review them before your session. Look out for a confirmation email with the call details.</p>
-      <div class="success-detail" id="success-detail"></div>
-      <p style="font-size:13px; color:var(--text-muted); line-height:1.75; max-width:400px; margin:0 auto;">
-        If you need to reschedule or have any questions before the call, email
-        <a href="mailto:connect@theunreleasedartist.com" style="color:var(--gold); text-decoration:none;">connect@theunreleasedartist.com</a>
-      </p>
+    <div class="booking-cta">
+      <div class="booking-cta-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(201,151,58,0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+      <h3>15 minutes, on your schedule</h3>
+      <p>Choose a time on my booking page and answer a couple of short questions, so I arrive knowing your context. You'll get a confirmation by email.</p>
+      <a class="booking-cta-btn" href="https://majestry.co/book/theunreleasedartist" target="_blank" rel="noopener">See available times</a>
+      <p class="booking-cta-note">Free. No pitch. No commitment.</p>
     </div>
 
   </div>
@@ -695,7 +660,11 @@ footer {
       <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#c9973a; margin-bottom:0.75rem;">Stay in the loop</div>
       <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:#f0d9a8; line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
       <p style="font-size:13px; color:rgba(240,217,168,0.7); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
-      <div style="max-width:400px; margin:0 auto;"><div data-reach-form="542463a5-d5fb-4375-877b-6c835aa386c4"></div></div>
+      <div style="max-width:400px; margin:0 auto;"><form class="ml-form" onsubmit="return joinList(this)" style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
+        <input type="email" name="email" required autocomplete="email" placeholder="your@email.com" style="flex:1 1 220px;min-width:0;padding:13px 16px;border-radius:4px;border:1px solid rgba(201,151,58,0.42);background:#141414;color:#f0d9a8;font-family:inherit;font-size:14px;outline:none;"/>
+        <button type="submit" style="padding:13px 26px;border:none;border-radius:4px;background:#c9973a;color:#080808;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Join</button>
+        <p class="ml-msg" aria-live="polite" style="flex:1 0 100%;margin:.6rem 0 0;font-size:13px;color:rgba(240,217,168,0.58);text-align:center;"></p>
+      </form></div>
     </div>
     
 
@@ -713,39 +682,34 @@ footer {
 </footer>
 
 <script>
-function submitPrebook() {
-  const name = document.getElementById('pre-name').value.trim();
-  const email = document.getElementById('pre-email').value.trim();
-  const role = document.getElementById('pre-role').value;
-  const experience = document.getElementById('pre-experience').value;
-  const block = document.getElementById('pre-block').value.trim();
-  const outcome = document.getElementById('pre-outcome').value.trim();
-  const other = document.getElementById('pre-other').value.trim();
-
-  if (!name || !email) {
-    alert('Please enter your name and email so I know who to expect.');
-    return;
-  }
-
-  // Save locally
-  const entry = { name, email, role, experience, block, outcome, other, ts: new Date().toISOString() };
-  const existing = JSON.parse(localStorage.getItem('ura_bookings') || '[]');
-  existing.unshift(entry);
-  localStorage.setItem('ura_bookings', JSON.stringify(existing));
-
-  // Show success
-  document.getElementById('prebook-form-wrap').style.display = 'none';
-  document.getElementById('prebook-success').style.display = 'block';
-
-  const detail = document.getElementById('success-detail');
-  detail.innerHTML = `
-    <div class="success-detail-row"><span>Name</span><span>${name}</span></div>
-    <div class="success-detail-row"><span>Email</span><span>${email}</span></div>
-    ${role ? `<div class="success-detail-row"><span>Role</span><span>${role}</span></div>` : ''}
-    <div class="success-detail-row"><span>Status</span><span style="color:#4a8c5c;">Notes received ✓</span></div>
-  `;
-
-  window.scrollTo({ top: document.getElementById('prebook-success').offsetTop - 100, behavior: 'smooth' });
+/* The list lives in Majestry now, not Hostinger Reach. The wording below is
+   ours on purpose: the API answers with its own product name, which is not the
+   name anyone reading this page has ever heard. */
+function joinList(form) {
+  var msg = form.querySelector('.ml-msg');
+  var btn = form.querySelector('button');
+  var email = form.email.value.trim();
+  btn.disabled = true;
+  msg.textContent = 'Sending\u2026';
+  fetch('https://majestry.co/api/mailing-list', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+    .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+    .then(function (d) {
+      if (d && d.ok) {
+        form.reset();
+        msg.textContent = "You're on the list. Look out for the next one.";
+      } else {
+        msg.textContent = (d && d.error) || 'Something went wrong. Try again in a moment.';
+      }
+    })
+    .catch(function () {
+      msg.textContent = 'Something went wrong. Try again in a moment.';
+    })
+    .then(function () { btn.disabled = false; });
+  return false;
 }
 </script>
 </body>

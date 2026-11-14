@@ -170,7 +170,6 @@
     /* ══════ END CANONICAL SHELL ══════ */
 
   </style>
-  <script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
 </head>
 <body>
 
@@ -257,13 +256,13 @@
     <p>Running a site like this means some things happen through other companies. Each one gets only what it needs to do its job. They all have their own privacy policies, and I have linked them so you can read them yourself.</p>
     <ul>
       <li><strong>Hostinger</strong> hosts this website and runs the email list. Your email address is stored with them. <a href="https://www.hostinger.com/privacy-policy" target="_blank" rel="noopener">Their policy</a>.</li>
-      <li><strong>Calendly</strong> handles the booking form and the calendar. What you type into that form goes to them and to me. <a href="https://calendly.com/privacy" target="_blank" rel="noopener">Their policy</a>.</li>
+      <li><strong>Majestry</strong> is my own booking software, and it is where the discovery call form goes. What you type goes to me, not to a third party, and it is covered by this policy. It runs on Vercel, which hosts it, and Supabase, which stores the data.</li>
       <li><strong>Zoom</strong> is where the calls happen. <a href="https://www.zoom.com/en/trust/privacy/" target="_blank" rel="noopener">Their policy</a>.</li>
       <li><strong>Meta</strong>. If I am running ads, a Meta Pixel on this site tells Meta which pages you visited so I can measure whether the ad worked and show ads to people like you. Meta may combine that with what it already knows about you and may share it onward with its own partners. <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">Their policy</a>. You can opt out of this kind of ad targeting in your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">Meta ad settings</a>.</li>
       <li><strong>Google Fonts</strong> serves the typefaces. Loading them sends your IP address to Google. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Their policy</a>.</li>
       <li><strong>Unsplash</strong> serves the photographs behind the homepage header, which means your IP address reaches them when the page loads. <a href="https://unsplash.com/privacy" target="_blank" rel="noopener">Their policy</a>.</li>
       <li><strong>Stripe</strong> processes payments if you join the Inner Circle or any paid program. Your card details go straight to Stripe &mdash; I never see them and I do not store them. <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Their policy</a>.</li>
-                    <li><strong>Anocturne</strong> is my own community portal, and it is where the Inner Circle and client work live. Your account there is with me, not with a third party, and it is covered by this policy.</li>
+                    <li><strong>My member portal</strong> is software I built and run myself, and it is where the Inner Circle and client work live. Your account there is with me, not with a third party, and it is covered by this policy.</li>
     </ul>
 
     <h2>Cookies and tracking</h2>
@@ -302,7 +301,11 @@
       <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Stay in the loop</div>
       <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--gold-pale); line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
       <p style="font-size:13px; color:var(--text-muted); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
-      <div style="max-width:400px; margin:0 auto;"><div data-reach-form="542463a5-d5fb-4375-877b-6c835aa386c4"></div></div>
+      <div style="max-width:400px; margin:0 auto;"><form class="ml-form" onsubmit="return joinList(this)" style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
+        <input type="email" name="email" required autocomplete="email" placeholder="your@email.com" style="flex:1 1 220px;min-width:0;padding:13px 16px;border-radius:4px;border:1px solid rgba(201,151,58,0.42);background:#141414;color:#f0d9a8;font-family:inherit;font-size:14px;outline:none;"/>
+        <button type="submit" style="padding:13px 26px;border:none;border-radius:4px;background:#c9973a;color:#080808;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Join</button>
+        <p class="ml-msg" aria-live="polite" style="flex:1 0 100%;margin:.6rem 0 0;font-size:13px;color:rgba(240,217,168,0.58);text-align:center;"></p>
+      </form></div>
     </div>
 
     <div class="footer-brand">
@@ -316,5 +319,36 @@
     <p class="footer-copy">&copy; 2026 The Unreleased Artist&trade;. All rights reserved. <span class="footer-sep">·</span> <a href="/privacy.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Privacy</a> <span class="footer-sep">·</span> <a href="/terms.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Terms</a></p>
   </footer>
 
+<script>
+/* The list lives in Majestry now, not Hostinger Reach. The wording below is
+   ours on purpose: the API answers with its own product name, which is not the
+   name anyone reading this page has ever heard. */
+function joinList(form) {
+  var msg = form.querySelector('.ml-msg');
+  var btn = form.querySelector('button');
+  var email = form.email.value.trim();
+  btn.disabled = true;
+  msg.textContent = 'Sending\u2026';
+  fetch('https://majestry.co/api/mailing-list', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+    .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+    .then(function (d) {
+      if (d && d.ok) {
+        form.reset();
+        msg.textContent = "You're on the list. Look out for the next one.";
+      } else {
+        msg.textContent = (d && d.error) || 'Something went wrong. Try again in a moment.';
+      }
+    })
+    .catch(function () {
+      msg.textContent = 'Something went wrong. Try again in a moment.';
+    })
+    .then(function () { btn.disabled = false; });
+  return false;
+}
+</script>
 </body>
 </html>

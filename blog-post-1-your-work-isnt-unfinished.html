@@ -181,7 +181,6 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--tex
     }
     /* ══════ END CANONICAL SHELL ══════ */
 </style>
-  <script src="https://cdn-reach.hostinger.com/js/embed.js"></script>
 </head>
 <body>
 
@@ -377,7 +376,11 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--tex
       <div style="font-size:10px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Stay in the loop</div>
       <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--gold-pale); line-height:1.4; margin-bottom:0.5rem;">Weekly insight for music creatives doing it alone.</p>
       <p style="font-size:13px; color:var(--text-muted); margin-bottom:1.5rem; font-weight:300; line-height:1.7;">Short, honest, and worth reading. No fluff. No spam. Unsubscribe anytime.</p>
-      <div style="max-width:400px; margin:0 auto;"><div data-reach-form="542463a5-d5fb-4375-877b-6c835aa386c4"></div></div>
+      <div style="max-width:400px; margin:0 auto;"><form class="ml-form" onsubmit="return joinList(this)" style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;">
+        <input type="email" name="email" required autocomplete="email" placeholder="your@email.com" style="flex:1 1 220px;min-width:0;padding:13px 16px;border-radius:4px;border:1px solid rgba(201,151,58,0.42);background:#141414;color:#f0d9a8;font-family:inherit;font-size:14px;outline:none;"/>
+        <button type="submit" style="padding:13px 26px;border:none;border-radius:4px;background:#c9973a;color:#080808;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Join</button>
+        <p class="ml-msg" aria-live="polite" style="flex:1 0 100%;margin:.6rem 0 0;font-size:13px;color:rgba(240,217,168,0.58);text-align:center;"></p>
+      </form></div>
     </div>
 
     <div class="footer-brand">
@@ -391,5 +394,36 @@ body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--tex
     <p class="footer-copy">&copy; 2026 The Unreleased Artist&trade;. All rights reserved. <span class="footer-sep">·</span> <a href="/privacy.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Privacy</a> <span class="footer-sep">·</span> <a href="/terms.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Terms</a></p>
   </footer>
 
+<script>
+/* The list lives in Majestry now, not Hostinger Reach. The wording below is
+   ours on purpose: the API answers with its own product name, which is not the
+   name anyone reading this page has ever heard. */
+function joinList(form) {
+  var msg = form.querySelector('.ml-msg');
+  var btn = form.querySelector('button');
+  var email = form.email.value.trim();
+  btn.disabled = true;
+  msg.textContent = 'Sending\u2026';
+  fetch('https://majestry.co/api/mailing-list', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  })
+    .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+    .then(function (d) {
+      if (d && d.ok) {
+        form.reset();
+        msg.textContent = "You're on the list. Look out for the next one.";
+      } else {
+        msg.textContent = (d && d.error) || 'Something went wrong. Try again in a moment.';
+      }
+    })
+    .catch(function () {
+      msg.textContent = 'Something went wrong. Try again in a moment.';
+    })
+    .then(function () { btn.disabled = false; });
+  return false;
+}
+</script>
 </body>
 </html>

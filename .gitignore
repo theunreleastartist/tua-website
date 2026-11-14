@@ -1,3 +1,11 @@
 _to_delete/
 _incoming/
 .DS_Store
+
+# Working material that must never deploy publicly
+OLD/
+index06/
+*.wav
+*.backup-*.html
+*.backup2-*.html
+*.backup3-*.html
